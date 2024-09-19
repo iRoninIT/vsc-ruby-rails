@@ -1,5 +1,12 @@
 [
   {
+    "label": "Show Ruby Version",
+    "type": "shell",
+    "command": "ruby -v",
+    "problemMatcher": [],
+    "condition": ""
+  },
+  {
     "label": "Bundle Install",
     "type": "shell",
     "command": "bundle install",
