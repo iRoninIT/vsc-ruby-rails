@@ -12,5 +12,12 @@
     "command": "bundle install",
     "problemMatcher": [],
     "condition": "hasGemfile"
+  },
+  {
+    "label": "Run Ruby File",
+    "type": "shell",
+    "command": "ruby ${file}",
+    "problemMatcher": [],
+    "condition": "isRubyFile"
   }
 ]

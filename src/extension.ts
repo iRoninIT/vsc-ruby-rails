@@ -33,8 +33,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 			const workspaceFolder = workspaceFolders[0];
 			const gemfileExists = await hasGemfile(workspaceFolder);
+			const isRuby = await isRubyFile();
 			const environmentVariables = {
-				hasGemfile: gemfileExists
+				hasGemfile: gemfileExists,
+				isRubyFile: isRuby
 			};
 
 			// Filter tasks based on conditions
@@ -91,4 +93,14 @@ async function hasGemfile(workspaceFolder: vscode.WorkspaceFolder): Promise<bool
 	return fs.promises.access(gemfilePath, fs.constants.F_OK)
 		.then(() => true)
 		.catch(() => false);
+}
+
+// Added helper function to check if the current file is a Ruby file
+async function isRubyFile(): Promise<boolean> {
+	const editor = vscode.window.activeTextEditor;
+	if (!editor) {
+		return false;
+	}
+	const document = editor.document;
+	return document.languageId === 'ruby';
 }
