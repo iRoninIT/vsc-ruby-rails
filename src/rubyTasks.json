@@ -1,0 +1,9 @@
+[
+  {
+    "label": "Bundle Install",
+    "type": "shell",
+    "command": "bundle install",
+    "problemMatcher": [],
+    "condition": "hasGemfile"
+  }
+]
