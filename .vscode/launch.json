@@ -15,7 +15,25 @@
 			"outFiles": [
 				"${workspaceFolder}/dist/**/*.js"
 			],
-			"preLaunchTask": "${defaultBuildTask}"
+			"preLaunchTask": "${defaultBuildTask}",
+			"console": "integratedTerminal",
+			"sourceMaps": true
+		},
+		{
+			"name": "Debug Extension",
+			"type": "extensionHost",
+			"request": "launch",
+			"args": [
+				"--extensionDevelopmentPath=${workspaceFolder}"
+			],
+			"outFiles": [
+				"${workspaceFolder}/dist/**/*.js"
+			],
+			"preLaunchTask": "${defaultBuildTask}",
+			"console": "integratedTerminal",
+			"sourceMaps": true,
+			"stopOnEntry": false,
+			"internalConsoleOptions": "openOnSessionStart"
 		}
 	]
 }
