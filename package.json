@@ -15,6 +15,16 @@
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
+		"commands": [
+			{
+				"command": "extension.runTask.ShowRubyVersion",
+				"title": "ruby: Show Ruby Version"
+			},
+			{
+				"command": "extension.runTask.BundleInstall",
+				"title": "ruby: Bundle Install"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "pnpm run package",

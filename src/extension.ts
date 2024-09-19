@@ -60,6 +60,25 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+	// Register commands to execute tasks dynamically
+	rubyTasks.forEach(task => {
+		const commandId = `extension.runTask.${task.label.replace(/\s+/g, '')}`;
+		const commandTitle = `ruby: ${task.label}`;
+		
+		context.subscriptions.push(
+			vscode.commands.registerCommand(commandId, () => {
+				const vscodeTask = new vscode.Task(
+					{ type: 'ruby', task: task.label },
+					vscode.TaskScope.Workspace,
+					task.label,
+					'ruby',
+					new vscode.ShellExecution(task.command)
+				);
+				vscode.tasks.executeTask(vscodeTask);
+			})
+		);
+	});
+
 	context.subscriptions.push(taskProvider);
 }
 
