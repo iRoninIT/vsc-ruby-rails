@@ -10,11 +10,11 @@ Simple extension for Visual Studio Code that adds sample Ruby and Ruby on Rails 
 
 ### Tasks
 
-\!\[feature X\]\(images/tasks.png\)
+![feature X](images/tasks.png)
 
 ### Commands
 
-\!\[feature X\]\(images/commands.png\)
+![feature X](images/commands.png)
 
 ## Known Issues
 
