@@ -39,8 +39,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 			// Filter tasks based on conditions
 			const applicableTasks = rubyTasks.filter(task => {
-				if (!task.condition) return true; // No condition, always include
-				const condition = task.condition;
+				if (!task.condition) {return true;} 
+				const condition = task.condition as keyof typeof environmentVariables;
 				return environmentVariables[condition];
 			});
 
