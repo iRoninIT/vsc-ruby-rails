@@ -18,11 +18,9 @@ Simple extension for Visual Studio Code that adds sample Ruby and Ruby on Rails 
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+None
 
 ## Release Notes
-
-Users appreciate release notes as you update your extension.
 
 ### 0.1.0
 
