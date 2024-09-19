@@ -1,8 +1,8 @@
 {
-  "name": "ironin-vsc-ruby",
-  "displayName": "iRonin VSC Ruby",
-  "description": "Ruby features for VSC",
-  "version": "0.0.2",
+  "name": "ironin-vsc-ruby-rails",
+  "displayName": "Ruby and Rails Toolkit",
+  "description": "Ruby and Ruby on Rails features for VSC",
+  "version": "0.1.0",
   "publisher": "iRonin.IT",
   "engines": {
     "vscode": "^1.91.1"
