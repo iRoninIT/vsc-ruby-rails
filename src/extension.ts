@@ -39,9 +39,12 @@ export function activate(context: vscode.ExtensionContext) {
 				isRubyFile: isRuby
 			};
 
+			// Update context keys based on conditions
+			setContextKeys(environmentVariables);
+
 			// Filter tasks based on conditions
 			const applicableTasks = rubyTasks.filter(task => {
-				if (!task.condition) {return true;} 
+				if (!task.condition) { return true; }
 				const condition = task.condition as keyof typeof environmentVariables;
 				return environmentVariables[condition];
 			});
@@ -82,6 +85,29 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	context.subscriptions.push(taskProvider);
+
+	// Update context keys on relevant events
+	vscode.workspace.onDidChangeWorkspaceFolders(() => {
+		updateContextKeys();
+	}, null, context.subscriptions);
+
+	vscode.window.onDidChangeActiveTextEditor(() => {
+		updateContextKeys();
+	}, null, context.subscriptions);
+
+	async function updateContextKeys() {
+		const workspaceFolders = vscode.workspace.workspaceFolders;
+		const gemfileExists = workspaceFolders ? await hasGemfile(workspaceFolders[0]) : false;
+		const isRuby = await isRubyFile();
+		const environmentVariables = {
+			hasGemfile: gemfileExists,
+			isRubyFile: isRuby
+		};
+		setContextKeys(environmentVariables);
+	}
+
+	// Initial context key setup
+	updateContextKeys();
 }
 
 // This method is called when your extension is deactivated
@@ -95,7 +121,7 @@ async function hasGemfile(workspaceFolder: vscode.WorkspaceFolder): Promise<bool
 		.catch(() => false);
 }
 
-// Added helper function to check if the current file is a Ruby file
+// Helper function to check if the current file is a Ruby file
 async function isRubyFile(): Promise<boolean> {
 	const editor = vscode.window.activeTextEditor;
 	if (!editor) {
@@ -103,4 +129,11 @@ async function isRubyFile(): Promise<boolean> {
 	}
 	const document = editor.document;
 	return document.languageId === 'ruby';
+}
+
+// New: Set context keys based on environment variables
+function setContextKeys(env: { [key: string]: boolean }) {
+	Object.keys(env).forEach(key => {
+		vscode.commands.executeCommand('setContext', key, env[key]);
+	});
 }

@@ -1,56 +1,76 @@
 {
-	"name": "ironin-vsc-ruby",
-	"displayName": "iRonin VSC Ruby",
-	"description": "Ruby features for VSC",
-	"version": "0.0.2",
-	"publisher": "iRonin.IT",
-	"engines": {
-		"vscode": "^1.91.1"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onStartupFinished"
-	],
-	"main": "./dist/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "extension.runTask.ShowRubyVersion",
-				"title": "ruby: Show Ruby Version"
-			},
-			{
-				"command": "extension.runTask.BundleInstall",
-				"title": "ruby: Bundle Install"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "pnpm run package",
-		"compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
-		"watch": "npm-run-all -p watch:*",
-		"watch:esbuild": "node esbuild.js --watch",
-		"watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-		"package": "pnpm run check-types && pnpm run lint && node esbuild.js --production",
-		"compile-tests": "tsc -p . --outDir out",
-		"watch-tests": "tsc -p . -w --outDir out",
-		"pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
-		"check-types": "tsc --noEmit",
-		"lint": "eslint src",
-		"test": "vscode-test"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.91.1",
-		"@types/mocha": "^10.0.7",
-		"@types/node": "20.x",
-		"@typescript-eslint/eslint-plugin": "^8.3.0",
-		"@typescript-eslint/parser": "^8.3.0",
-		"eslint": "^9.9.1",
-		"esbuild": "^0.23.1",
-		"npm-run-all": "^4.1.5",
-		"typescript": "^5.5.4",
-		"@vscode/test-cli": "^0.0.10",
-		"@vscode/test-electron": "^2.4.1"
-	}
+  "name": "ironin-vsc-ruby",
+  "displayName": "iRonin VSC Ruby",
+  "description": "Ruby features for VSC",
+  "version": "0.0.2",
+  "publisher": "iRonin.IT",
+  "engines": {
+    "vscode": "^1.91.1"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.runTask.ShowRubyVersion",
+        "title": "ruby: Show Ruby Version"
+      },
+      {
+        "command": "extension.runTask.BundleInstall",
+        "title": "ruby: Bundle Install"
+      },
+      {
+        "command": "extension.runTask.RunRubyFile",
+        "title": "ruby: Run Ruby File"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "extension.runTask.ShowRubyVersion",
+          "when": ""
+        },
+        {
+          "command": "extension.runTask.BundleInstall",
+          "when": "hasGemfile"
+        },
+        {
+          "command": "extension.runTask.RunRubyFile",
+          "when": "isRubyFile"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "pnpm run check-types && pnpm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.91.1",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "eslint": "^9.9.1",
+    "esbuild": "^0.23.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.5.4",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
 }
