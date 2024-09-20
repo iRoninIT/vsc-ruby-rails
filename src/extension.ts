@@ -12,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 	console.log('Extension "ironin-vsc-ruby" is now active');
 
 	const extensionPath = context.extensionPath;
-	const rubyTasksPath = path.join(extensionPath, 'src', 'rubyTasks.json');
+	const rubyTasksPath = path.join(extensionPath, 'dist', 'rubyTasks.json');
 	let rubyTasks: any[] = [];
 
 	try {

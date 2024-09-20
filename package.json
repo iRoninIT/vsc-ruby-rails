@@ -3,7 +3,7 @@
   "displayName": "Ruby and Rails Toolkit",
   "description": "Ruby and Ruby on Rails features for VSC",
   "repository": "https://github.com/iRoninIT/ironin-vsc-ruby-rails",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "publisher": "iRoninIT",
   "engines": {
     "vscode": "^1.91.1"
@@ -12,7 +12,10 @@
     "Other"
   ],
   "activationEvents": [
-    "onStartupFinished"
+    "onStartupFinished",
+    "onCommand:extension.runTask.ShowRubyVersion",
+    "onCommand:extension.runTask.BundleInstall",
+    "onCommand:extension.runTask.RunRubyFile"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -78,5 +81,8 @@
   "dependencies": {
     "@vscode/vsce": "^3.1.0",
     "vsce": "^2.15.0"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

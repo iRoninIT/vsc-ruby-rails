@@ -27,6 +27,7 @@ const esbuildProblemMatcherPlugin = {
 
 // Added: Generate commands from rubyTasks.json
 async function generateCommands() {
+	console.log('generateCommands called'); // Added logging
 	const rubyTasksPath = path.join(__dirname, 'src', 'rubyTasks.json');
 	const packageJsonPath = path.join(__dirname, 'package.json');
 
@@ -64,6 +65,7 @@ async function generateCommands() {
 	fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
 	console.log('package.json commands and menu contributions have been updated based on rubyTasks.json.');
+	console.log('Added commands:', commands); // Added logging
 }
 
 async function main() {
@@ -98,3 +100,9 @@ main().catch(e => {
 	console.error(e);
 	process.exit(1);
 });
+
+// Copy rubyTasks.json to dist
+fs.copyFileSync(
+    path.join(__dirname, 'src', 'rubyTasks.json'),
+    path.join(__dirname, 'dist', 'rubyTasks.json')
+);
