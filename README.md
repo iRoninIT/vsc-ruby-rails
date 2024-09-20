@@ -8,23 +8,9 @@ Currently implmented Ruby features (as tasks or commands):
 - Show Ruby Version
 - Bundle Install
 - Run Ruby File
+- Install Debug Gem
+- Add rdbg launch config
 
 Easily add new tasks and commands by modifying `rubyTasks.json`
 
-### Tasks
-
-![feature X](images/tasks.png)
-
-### Commands
-
 ![feature X](images/commands.png)
-
-## Known Issues
-
-None
-
-## Release Notes
-
-### 0.1.0
-
-Initial release
