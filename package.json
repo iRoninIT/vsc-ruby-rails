@@ -32,6 +32,10 @@
       {
         "command": "extension.runTask.RunRubyFile",
         "title": "ruby: Run Ruby File"
+      },
+      {
+        "command": "ruby.addRdbgLaunchConfig",
+        "title": "ruby: Add rdbg launch config"
       }
     ],
     "menus": {

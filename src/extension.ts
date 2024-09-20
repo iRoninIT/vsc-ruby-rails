@@ -84,6 +84,12 @@ export function activate(context: vscode.ExtensionContext) {
 		);
 	});
 
+	// Register the new command
+	const addRdbgLaunchConfigCommand = 'ruby.addRdbgLaunchConfig';
+	context.subscriptions.push(
+		vscode.commands.registerCommand(addRdbgLaunchConfigCommand, addRdbgLaunchConfig)
+	);
+
 	context.subscriptions.push(taskProvider);
 
 	// Update context keys on relevant events
@@ -136,4 +142,56 @@ function setContextKeys(env: { [key: string]: boolean }) {
 	Object.keys(env).forEach(key => {
 		vscode.commands.executeCommand('setContext', key, env[key]);
 	});
+}
+
+async function addRdbgLaunchConfig() {
+	const workspaceFolders = vscode.workspace.workspaceFolders;
+	if (!workspaceFolders) {
+		vscode.window.showErrorMessage('No workspace folder found.');
+		return;
+	}
+
+	const launchJsonPath = path.join(workspaceFolders[0].uri.fsPath, '.vscode', 'launch.json');
+	let launchConfig: JSON;
+
+	const rdbgConfig = [{
+				"type": "rdbg",
+				"name": "Debug current file with rdbg",
+				"request": "launch",
+				"script": "${file}",
+				"args": [],
+				"askParameters": true
+			},
+			{
+				"type": "rdbg",
+				"name": "Attach with rdbg",
+				"request": "attach"
+			}];
+
+	if (fs.existsSync(launchJsonPath)) {
+		const launchContent = fs.readFileSync(launchJsonPath, 'utf8');
+		launchConfig = JSON.parse(launchContent);
+
+		const hasRdbg = launchConfig.configurations.some((config: any) => config.type === 'rdbg');
+		if (hasRdbg) {
+			vscode.window.showWarningMessage('rdbg configuration already exists');
+			return;
+		}
+
+		// Add new rdbg configurations
+		launchConfig.configurations.push(...rdbgConfig);
+
+		fs.writeFileSync(launchJsonPath, JSON.stringify(launchConfig, null, 4), 'utf8');
+	} else {
+		// Create launch.json with rdbg configurations
+		launchConfig = {
+			version: "0.2.0",
+			configurations: rdbgConfig
+		};
+
+		fs.mkdirSync(path.dirname(launchJsonPath), { recursive: true });
+	}
+	fs.writeFileSync(launchJsonPath, JSON.stringify(launchConfig, null, 4), 'utf8');
+	vscode.window.showInformationMessage('launch.json created with rdbg configurations');
+	vscode.window.showInformationMessage('remember to install the debug gem (available as a command)');
 }

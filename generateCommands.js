@@ -16,11 +16,13 @@ const commands = rubyTasks.map(task => ({
   title: `ruby: ${task.label}`
 }));
 
-// Update the contributes.commands section
-packageJson.contributes = packageJson.contributes || {};
-packageJson.contributes.commands = commands;
+// Preserve existing custom commands
+const customCommands = packageJson.contributes.commands.filter(cmd => cmd.command === 'ruby.addRdbgLaunchConfig');
 
-// Write back to package.json
-fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+// Merge generated and custom commands
+packageJson.contributes.commands = [...commands, ...customCommands];
+
+// Write updated package.json
+fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), 'utf8');
 
 console.log('package.json commands have been updated based on rubyTasks.json.');
