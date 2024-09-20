@@ -40,7 +40,11 @@
       },
       {
         "command": "ruby.addRdbgLaunchConfig",
-        "title": "💎 Add rdbg launch config"
+        "title": "💎 Add rdbg Launch Config"
+      },
+      {
+        "command": "ruby.addRailsDebugConfig",
+        "title": "💎 Add Rails Debug Config"
       }
     ]
   },

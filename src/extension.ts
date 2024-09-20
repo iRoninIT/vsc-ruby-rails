@@ -96,6 +96,12 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand(addRdbgLaunchConfigCommand, addRdbgLaunchConfig)
 	);
 
+	// Register the new command for adding Rails debug configuration
+	const addRailsDebugConfigCommand = 'ruby.addRailsDebugConfig';
+	context.subscriptions.push(
+		vscode.commands.registerCommand(addRailsDebugConfigCommand, addRailsDebugConfig)
+	);
+
 	context.subscriptions.push(taskProvider);
 
 	// Update context keys on relevant events
@@ -203,4 +209,44 @@ async function addRdbgLaunchConfig() {
 	fs.writeFileSync(launchJsonPath, JSON.stringify(launchConfig, null, 4), 'utf8');
 	vscode.window.showInformationMessage('launch.json created with rdbg configurations');
 	vscode.window.showInformationMessage('remember to install the debug gem (available as a command)');
+}
+
+// Implement the addRailsDebugConfig command
+async function addRailsDebugConfig() {
+	const workspaceFolders = vscode.workspace.workspaceFolders;
+	if (!workspaceFolders) {
+		vscode.window.showErrorMessage('No workspace folder found.');
+		return;
+	}
+
+	const workspacePath = workspaceFolders[0].uri.fsPath;
+	const binDevPath = path.join(workspacePath, 'bin', 'dev');
+	const procfileDevPath = path.join(workspacePath, 'Procfile.dev');
+	const binDebugPath = path.join(workspacePath, 'bin', 'debug');
+	const procfileDebugPath = path.join(workspacePath, 'Procfile.debug');
+
+	// Check and duplicate bin/dev to bin/debug
+	if (fs.existsSync(binDevPath)) {
+		fs.copyFileSync(binDevPath, binDebugPath);
+		let binDebugContent = fs.readFileSync(binDebugPath, 'utf8');
+		binDebugContent = binDebugContent.replace(/Procfile\.dev/g, 'Procfile.debug');
+		fs.writeFileSync(binDebugPath, binDebugContent, 'utf8');
+	} else {
+		vscode.window.showWarningMessage('bin/dev not found.');
+	}
+
+	// Check and duplicate Procfile.dev to Procfile.debug
+	if (fs.existsSync(procfileDevPath)) {
+		fs.copyFileSync(procfileDevPath, procfileDebugPath);
+		let procfileDebugContent = fs.readFileSync(procfileDebugPath, 'utf8');
+		procfileDebugContent = procfileDebugContent.replace(/^web:(.*)bin\/rails(.*)$/gm,
+			(match, p1, p2) => {
+				return `#${match}\nweb:${p1}rdbg -n --open -c -- bin/rails${p2}`;
+			});
+		fs.writeFileSync(procfileDebugPath, procfileDebugContent, 'utf8');
+	} else {
+		vscode.window.showWarningMessage('Procfile.dev not found.');
+	}
+
+	vscode.window.showInformationMessage('Debug configurations added successfully.');
 }
