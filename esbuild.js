@@ -1,6 +1,7 @@
 const esbuild = require("esbuild");
 const fs = require('fs');
 const path = require('path');
+const { exec } = require('child_process');
 
 const production = process.argv.includes('--production');
 const watch = process.argv.includes('--watch');
@@ -70,6 +71,20 @@ async function generateCommands() {
 
 async function main() {
 	await generateCommands(); // Ensure commands are generated before building
+
+	// Watch rubyTasks.json for changes
+	fs.watch(path.join(__dirname, 'src', 'rubyTasks.json'), (eventType) => {
+		if (eventType === 'change') {
+			console.log('rubyTasks.json changed. Regenerating commands...');
+			exec('node generateCommands.js', (error, stdout, stderr) => {
+				if (error) {
+					console.error(`Error running generateCommands.js: ${stderr}`);
+					return;
+				}
+				console.log(stdout);
+			});
+		}
+	});
 
 	const ctx = await esbuild.context({
 		entryPoints: [

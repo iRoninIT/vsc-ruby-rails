@@ -26,6 +26,10 @@
         "title": "ruby: Show Ruby Version"
       },
       {
+        "command": "extension.runTask.InstallDebugGem",
+        "title": "ruby: Install Debug Gem"
+      },
+      {
         "command": "extension.runTask.BundleInstall",
         "title": "ruby: Bundle Install"
       },
@@ -37,19 +41,7 @@
         "command": "ruby.addRdbgLaunchConfig",
         "title": "ruby: Add rdbg launch config"
       }
-    ],
-    "menus": {
-      "commandPalette": [
-        {
-          "command": "extension.runTask.BundleInstall",
-          "when": "hasGemfile"
-        },
-        {
-          "command": "extension.runTask.RunRubyFile",
-          "when": "isRubyFile"
-        }
-      ]
-    }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",

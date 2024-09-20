@@ -7,6 +7,13 @@
     "condition": ""
   },
   {
+    "label": "Install Debug Gem",
+    "type": "shell",
+    "command": "gem install debug",
+    "problemMatcher": [],
+    "condition": ""
+  },
+  {
     "label": "Bundle Install",
     "type": "shell",
     "command": "bundle install",
