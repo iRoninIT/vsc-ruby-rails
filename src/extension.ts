@@ -25,11 +25,15 @@ export function activate(context: vscode.ExtensionContext) {
 	async function updateContextKeys() {
 		const workspaceFolders = vscode.workspace.workspaceFolders;
 		const gemfileExists = workspaceFolders ? await hasGemfile(workspaceFolders[0]) : false;
-		const binRailsExists = workspaceFolders ? await hasBinRails(workspaceFolders[0]) : false;
+		const binRailsExists = workspaceFolders ? await hasBin(workspaceFolders[0], 'rails') : false;
+		const binDevExists = workspaceFolders ? await hasBin(workspaceFolders[0], 'dev') : false;
+		const binDebugExists = workspaceFolders ? await hasBin(workspaceFolders[0], 'debug') : false;
 		const isRuby = await isRubyFile();
 		const environmentVariables = {
 			hasGemfile: gemfileExists,
 			hasBinRails: binRailsExists,
+			hasBinDev: binDevExists,
+			hasBinDebug: binDebugExists,
 			isRubyFile: isRuby
 		};
 		setContextKeys(environmentVariables);
@@ -128,16 +132,16 @@ async function hasGemfile(workspaceFolder: vscode.WorkspaceFolder): Promise<bool
 		.catch(() => false);
 }
 
-// Helper function to check for bin/rails
-async function hasBinRails(workspaceFolder: vscode.WorkspaceFolder): Promise<boolean> {
-	const binRailsPath = path.join(workspaceFolder.uri.fsPath, 'bin', 'rails');
-	return fs.promises.access(binRailsPath, fs.constants.F_OK)
+// Helper function to check for bin files
+async function hasBin(workspaceFolder: vscode.WorkspaceFolder, binName: string): Promise<boolean> {
+	const binPath = path.join(workspaceFolder.uri.fsPath, 'bin', binName);
+	return fs.promises.access(binPath, fs.constants.F_OK)
 		.then(() => {
-			console.log(`bin/rails found at ${binRailsPath}`);
+			console.log(`bin/${binName} found at ${binPath}`);
 			return true;
 		})
 		.catch((error) => {
-			console.error(`bin/rails not found at ${binRailsPath}:`, error);
+			console.error(`bin/${binName} not found at ${binPath}:`, error);
 			return false;
 		});
 }
@@ -170,17 +174,17 @@ async function addRdbgLaunchConfig() {
 	let launchConfig: any;
 
 	const rdbgConfig = [{
+					"type": "rdbg",
+					"name": "Attach with rdbg",
+					"request": "attach"
+			},
+			{
 				"type": "rdbg",
 				"name": "Debug current file with rdbg",
 				"request": "launch",
 				"script": "${file}",
 				"args": [],
 				"askParameters": true
-			},
-			{
-				"type": "rdbg",
-				"name": "Attach with rdbg",
-				"request": "attach"
 			}];
 
 	if (fs.existsSync(launchJsonPath)) {

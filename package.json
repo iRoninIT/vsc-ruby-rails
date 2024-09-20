@@ -3,7 +3,7 @@
   "displayName": "Ruby and Rails Toolkit",
   "description": "Ruby and Ruby on Rails features for VSC",
   "repository": "https://github.com/iRoninIT/ironin-vsc-ruby-rails",
-  "version": "0.3.0",
+  "version": "0.4.1",
   "publisher": "iRoninIT",
   "icon": "images/icon.png",
   "engines": {
@@ -35,16 +35,20 @@
         "title": "💎 Run Ruby File"
       },
       {
-        "command": "extension.runTask.StartRailsServer",
-        "title": "💎 Start Rails Server"
+        "command": "extension.runTask.StartRailsServer:bin/railsserver",
+        "title": "💎 Start Rails Server: bin/rails server"
+      },
+      {
+        "command": "extension.runTask.StartRails:bin/dev",
+        "title": "💎 Start Rails: bin/dev"
+      },
+      {
+        "command": "extension.runTask.StartRails:bin/debug",
+        "title": "💎 Start Rails: bin/debug"
       },
       {
         "command": "ruby.addRdbgLaunchConfig",
         "title": "💎 Add rdbg Launch Config"
-      },
-      {
-        "command": "ruby.addRailsDebugConfig",
-        "title": "💎 Add Rails Debug Config"
       }
     ]
   },

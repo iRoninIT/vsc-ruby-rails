@@ -38,7 +38,7 @@
   {
     "label": "Start Rails Server: bin/rails server",
     "type": "shell",
-    "command": "bundle exec bin/rails server",
+    "command": "bin/rails server",
     "presentation": {
       "reveal": "always",
       "panel": "new"
@@ -46,7 +46,35 @@
     "problemMatcher": [
       "$ruby"
     ],
-    "dependsOn": "",
+    "dependsOn": "BundleInstall",
     "condition": "hasBinRails"
+  },
+  {
+    "label": "Start Rails: bin/dev",
+    "type": "shell",
+    "command": "bin/dev",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinDev"
+  },
+  {
+    "label": "Start Rails: bin/debug",
+    "type": "shell",
+    "command": "bin/debug",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinDev"
   }
 ]

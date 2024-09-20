@@ -61,7 +61,7 @@ async function generateCommands() {
 async function main() {
 	await generateCommands();
 
-	const ctx = await esbuild.context({
+	const buildOptions = {
 		entryPoints: [
 			'src/extension.ts',
 			'src/rubyTasks.json'
@@ -78,12 +78,23 @@ async function main() {
 		plugins: [
 			esbuildProblemMatcherPlugin,
 		],
-	});
+	};
+
 	if (watch) {
+		const ctx = await esbuild.context(buildOptions);
 		await ctx.watch();
+
+		// Watch all files in src/ directory
+		const srcPath = path.join(__dirname, 'src');
+		fs.watch(srcPath, { recursive: true }, async (eventType, filename) => {
+			if (filename) {
+				console.log(`[watch] ${filename} changed, rebuilding...`);
+				await ctx.rebuild().catch((err) => console.error(err));
+			}
+		});
 	} else {
-		await ctx.rebuild();
-		await ctx.dispose();
+		await esbuild.build(buildOptions);
+		process.exit(0); // Ensure the process exits after the build
 	}
 }
 

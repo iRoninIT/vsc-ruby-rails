@@ -58,7 +58,7 @@ Duplicates `Procfile.dev` to `Procfile.debug` and adds `rdbg` to the `web` proce
 Starts Ruby on Rails server.
 
 ```bash
-bundle exec bin/rails server
+bin/rails server
 ```
 
 ### Run Ruby File
