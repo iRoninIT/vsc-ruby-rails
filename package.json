@@ -20,27 +20,27 @@
     "commands": [
       {
         "command": "extension.runTask.ShowRubyVersion",
-        "title": "ruby: Show Ruby Version"
+        "title": "💎 Show Ruby Version"
       },
       {
         "command": "extension.runTask.InstallDebugGem",
-        "title": "ruby: Install Debug Gem"
+        "title": "💎 Install Debug Gem"
       },
       {
         "command": "extension.runTask.BundleInstall",
-        "title": "ruby: Bundle Install"
+        "title": "💎 Bundle Install"
       },
       {
         "command": "extension.runTask.RunRubyFile",
-        "title": "ruby: Run Ruby File"
+        "title": "💎 Run Ruby File"
       },
       {
         "command": "extension.runTask.StartRailsServer",
-        "title": "ruby: Start Rails Server"
+        "title": "💎 Start Rails Server"
       },
       {
         "command": "ruby.addRdbgLaunchConfig",
-        "title": "ruby: Add rdbg launch config"
+        "title": "💎 Add rdbg launch config"
       }
     ]
   },

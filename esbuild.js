@@ -41,7 +41,7 @@ async function generateCommands() {
 	// Generate commands based on rubyTasks
 	const commands = rubyTasks.map(task => ({
 		command: `extension.runTask.${task.label.replace(/\s+/g, '')}`,
-		title: `ruby: ${task.label}`
+		title: `💎 ${task.label}`
 	}));
 
 	// Preserve existing custom commands

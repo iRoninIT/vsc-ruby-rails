@@ -74,7 +74,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// Register commands to execute tasks dynamically
 	rubyTasks.forEach(task => {
 		const commandId = `extension.runTask.${task.label.replace(/\s+/g, '')}`;
-		const commandTitle = `ruby: ${task.label}`;
+		const commandTitle = `💎 ${task.label}`;
 
 		context.subscriptions.push(
 			vscode.commands.registerCommand(commandId, () => {
