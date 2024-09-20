@@ -22,6 +22,20 @@ export function activate(context: vscode.ExtensionContext) {
 		return;
 	}
 
+	async function updateContextKeys() {
+		const workspaceFolders = vscode.workspace.workspaceFolders;
+		const gemfileExists = workspaceFolders ? await hasGemfile(workspaceFolders[0]) : false;
+		const binRailsExists = workspaceFolders ? await hasBinRails(workspaceFolders[0]) : false;
+		const isRuby = await isRubyFile();
+		const environmentVariables = {
+			hasGemfile: gemfileExists,
+			hasBinRails: binRailsExists,
+			isRubyFile: isRuby
+		};
+		setContextKeys(environmentVariables);
+		return environmentVariables;
+	}
+
 	// Register task provider
 	const taskProvider = vscode.tasks.registerTaskProvider('ruby', {
 		provideTasks: async () => {
@@ -32,15 +46,7 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 
 			const workspaceFolder = workspaceFolders[0];
-			const gemfileExists = await hasGemfile(workspaceFolder);
-			const isRuby = await isRubyFile();
-			const environmentVariables = {
-				hasGemfile: gemfileExists,
-				isRubyFile: isRuby
-			};
-
-			// Update context keys based on conditions
-			setContextKeys(environmentVariables);
+			const environmentVariables = await updateContextKeys();
 
 			// Filter tasks based on conditions
 			const applicableTasks = rubyTasks.filter(task => {
@@ -69,7 +75,7 @@ export function activate(context: vscode.ExtensionContext) {
 	rubyTasks.forEach(task => {
 		const commandId = `extension.runTask.${task.label.replace(/\s+/g, '')}`;
 		const commandTitle = `ruby: ${task.label}`;
-		
+
 		context.subscriptions.push(
 			vscode.commands.registerCommand(commandId, () => {
 				const vscodeTask = new vscode.Task(
@@ -101,17 +107,6 @@ export function activate(context: vscode.ExtensionContext) {
 		updateContextKeys();
 	}, null, context.subscriptions);
 
-	async function updateContextKeys() {
-		const workspaceFolders = vscode.workspace.workspaceFolders;
-		const gemfileExists = workspaceFolders ? await hasGemfile(workspaceFolders[0]) : false;
-		const isRuby = await isRubyFile();
-		const environmentVariables = {
-			hasGemfile: gemfileExists,
-			isRubyFile: isRuby
-		};
-		setContextKeys(environmentVariables);
-	}
-
 	// Initial context key setup
 	updateContextKeys();
 }
@@ -125,6 +120,20 @@ async function hasGemfile(workspaceFolder: vscode.WorkspaceFolder): Promise<bool
 	return fs.promises.access(gemfilePath, fs.constants.F_OK)
 		.then(() => true)
 		.catch(() => false);
+}
+
+// Helper function to check for bin/rails
+async function hasBinRails(workspaceFolder: vscode.WorkspaceFolder): Promise<boolean> {
+	const binRailsPath = path.join(workspaceFolder.uri.fsPath, 'bin', 'rails');
+	return fs.promises.access(binRailsPath, fs.constants.F_OK)
+		.then(() => {
+			console.log(`bin/rails found at ${binRailsPath}`);
+			return true;
+		})
+		.catch((error) => {
+			console.error(`bin/rails not found at ${binRailsPath}:`, error);
+			return false;
+		});
 }
 
 // Helper function to check if the current file is a Ruby file

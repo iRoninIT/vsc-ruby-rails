@@ -3,28 +3,50 @@
     "label": "Show Ruby Version",
     "type": "shell",
     "command": "ruby -v",
-    "problemMatcher": [],
+    "problemMatcher": [
+      "$ruby"
+    ],
     "condition": ""
   },
   {
     "label": "Install Debug Gem",
     "type": "shell",
     "command": "gem install debug",
-    "problemMatcher": [],
+    "problemMatcher": [
+      "$ruby"
+    ],
     "condition": ""
   },
   {
     "label": "Bundle Install",
     "type": "shell",
     "command": "bundle install",
-    "problemMatcher": [],
+    "problemMatcher": [
+      "$ruby"
+    ],
     "condition": "hasGemfile"
   },
   {
     "label": "Run Ruby File",
     "type": "shell",
     "command": "ruby ${file}",
-    "problemMatcher": [],
+    "problemMatcher": [
+      "$ruby"
+    ],
     "condition": "isRubyFile"
+  },
+  {
+    "label": "Start Rails Server",
+    "type": "shell",
+    "command": "bundle exec bin/rails server",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "",
+    "condition": "hasBinRails"
   }
 ]
