@@ -2,8 +2,9 @@
   "name": "ironin-vsc-ruby-rails",
   "displayName": "Ruby and Rails Toolkit",
   "description": "Ruby and Ruby on Rails features for VSC",
+  "repository": "https://github.com/iRoninIT/ironin-vsc-ruby-rails",
   "version": "0.1.0",
-  "publisher": "iRonin.IT",
+  "publisher": "iRoninIT",
   "engines": {
     "vscode": "^1.91.1"
   },
@@ -32,10 +33,6 @@
     "menus": {
       "commandPalette": [
         {
-          "command": "extension.runTask.ShowRubyVersion",
-          "when": ""
-        },
-        {
           "command": "extension.runTask.BundleInstall",
           "when": "hasGemfile"
         },
@@ -61,16 +58,25 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.91.1",
     "@types/mocha": "^10.0.7",
     "@types/node": "20.x",
+    "@types/vscode": "^1.91.1",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^8.3.0",
-    "eslint": "^9.9.1",
-    "esbuild": "^0.23.1",
-    "npm-run-all": "^4.1.5",
-    "typescript": "^5.5.4",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.23.1",
+    "esbuild-plugin-clean": "^1.0.1",
+    "eslint": "^9.9.1",
+    "npm-run-all": "^4.1.5",
+    "source-map-loader": "^5.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.5.4",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@vscode/vsce": "^3.1.0",
+    "vsce": "^2.15.0"
   }
 }
