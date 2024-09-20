@@ -152,7 +152,7 @@ async function addRdbgLaunchConfig() {
 	}
 
 	const launchJsonPath = path.join(workspaceFolders[0].uri.fsPath, '.vscode', 'launch.json');
-	let launchConfig: JSON;
+	let launchConfig: any;
 
 	const rdbgConfig = [{
 				"type": "rdbg",

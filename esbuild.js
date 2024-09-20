@@ -44,51 +44,27 @@ async function generateCommands() {
 		title: `ruby: ${task.label}`
 	}));
 
-	// Generate menu contributions based on task conditions
-	const menuCommands = rubyTasks.map(task => ({
-		command: `extension.runTask.${task.label.replace(/\s+/g, '')}`,
-		when: task.condition ? `${task.condition}` : undefined,
-		key: undefined // You can add keyboard shortcuts here if needed
-	})).filter(menu => menu.when); // Only include menus with conditions
+	// Preserve existing custom commands
+	const customCommands = packageJson.contributes.commands.filter(cmd => cmd.command === 'ruby.addRdbgLaunchConfig');
 
-	// Update the contributes.commands section
-	packageJson.contributes = packageJson.contributes || {};
-	packageJson.contributes.commands = commands;
+	// Merge generated and custom commands
+	packageJson.contributes.commands = [...commands, ...customCommands];
 
-	// Update the contributes.menus section
-	packageJson.contributes.menus = packageJson.contributes.menus || {};
-	packageJson.contributes.menus['commandPalette'] = menuCommands.map(menu => ({
-		command: menu.command,
-		when: menu.when
-	}));
 
 	// Write back to package.json
-	fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+	fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), 'utf8');
 
 	console.log('package.json commands and menu contributions have been updated based on rubyTasks.json.');
 	console.log('Added commands:', commands); // Added logging
 }
 
 async function main() {
-	await generateCommands(); // Ensure commands are generated before building
-
-	// Watch rubyTasks.json for changes
-	fs.watch(path.join(__dirname, 'src', 'rubyTasks.json'), (eventType) => {
-		if (eventType === 'change') {
-			console.log('rubyTasks.json changed. Regenerating commands...');
-			exec('node generateCommands.js', (error, stdout, stderr) => {
-				if (error) {
-					console.error(`Error running generateCommands.js: ${stderr}`);
-					return;
-				}
-				console.log(stdout);
-			});
-		}
-	});
+	await generateCommands();
 
 	const ctx = await esbuild.context({
 		entryPoints: [
-			'src/extension.ts'
+			'src/extension.ts',
+			'src/rubyTasks.json'
 		],
 		bundle: true,
 		format: 'cjs',
@@ -96,7 +72,7 @@ async function main() {
 		sourcemap: !production,
 		sourcesContent: false,
 		platform: 'node',
-		outfile: 'dist/extension.js',
+		outdir: 'dist',
 		external: ['vscode'],
 		logLevel: 'silent',
 		plugins: [
