@@ -50,6 +50,20 @@
     "condition": "hasBinRails"
   },
   {
+    "label": "Start Rails Console: bin/rails c",
+    "type": "shell",
+    "command": "bin/rails c",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
     "label": "Start Rails: bin/dev",
     "type": "shell",
     "command": "bin/dev",

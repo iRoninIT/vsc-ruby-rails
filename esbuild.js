@@ -97,7 +97,7 @@ async function main() {
 		fs.watch(srcPath, { recursive: true }, async (eventType, filename) => {
 			if (filename) {
 				console.log(`[watch] ${filename} changed, rebuilding...`);
-				await ctx.rebuild().catch((err) => console.error(err));
+				await  generateCommands().catch((err) => console.error(err));
 			}
 		});
 	} else {

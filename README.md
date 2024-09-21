@@ -15,6 +15,7 @@ Currently implmented features (as tasks or commands):
 - Install Rails Debug Config (command only)
 - Install rdbg VSC launch config (command only)
 - Start Rails Server with `bin/rails server`
+- Start Rails Console with `bin/rails c`
 - Start Rails: `bin/dev` (assuming it's already present)
 - Start Rails debug mode with: `bin/debug` (available after running `Add Rails Debug Config`)
 
@@ -36,6 +37,8 @@ Creates or extends `.vscode/tasks.json` with all this [extensions tasks](https:/
 It only adds tasks that are not already present in the file by comparing the `command`.
 
 Unfortunately the tasks added dynamically are not visible when you open `Tasks: Run Tasks`, only in `Show All Tasks`. Installing tasks make them more accessible.
+
+The advantage of the extension tasks (over the installed) is that they are available only if their condition are met (eg. if `bin/rails` exists for `Run Rails Server` etc).
 
 ### Install rdbg VSC launch config
 
@@ -74,6 +77,14 @@ Starts Ruby on Rails server.
 
 ```bash
 bin/rails server
+```
+
+### Start Rails Console
+
+Starts Ruby on Rails console.
+
+```bash
+bin/rails c
 ```
 
 ### Run Ruby File

@@ -3,7 +3,7 @@
   "displayName": "Ruby and Rails Toolkit",
   "description": "Ruby and Ruby on Rails features for VSC",
   "repository": "https://github.com/iRoninIT/vsc-ruby-rails",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "publisher": "iRoninIT",
   "website": "https://www.iRonin.it",
   "icon": "images/icon.png",
@@ -38,6 +38,10 @@
       {
         "command": "extension.runTask.StartRailsServer:bin/railsserver",
         "title": "💎 Start Rails Server: bin/rails server"
+      },
+      {
+        "command": "extension.runTask.StartRailsConsole:bin/railsc",
+        "title": "💎 Start Rails Console: bin/rails c"
       },
       {
         "command": "extension.runTask.StartRails:bin/dev",
