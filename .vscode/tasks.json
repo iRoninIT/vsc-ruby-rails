@@ -59,6 +59,24 @@
 				"npm: watch-tests"
 			],
 			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"label": "vsce publish",
+			"command": "pnpm vsce publish --no-dependencies",
+			"group": "build",
+			"presentation": {
+				"reveal": "always"
+			}
+		},
+		{
+			"type": "shell",
+			"label": "vsce package",
+			"command": "pnpm vsce package --no-dependencies",
+			"group": "build",
+			"presentation": {
+				"reveal": "always"
+			}
 		}
 	]
 }
