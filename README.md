@@ -1,4 +1,4 @@
-# ironin-vsc-ruby-rails README
+# vsc-ruby-rails README
 
 Simple extension for Visual Studio Code (VSC / VSCode) that adds sample Ruby and Ruby on Rails (RoR) features.
 
