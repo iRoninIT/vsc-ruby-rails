@@ -2,9 +2,10 @@
   "name": "ironin-vsc-ruby-rails",
   "displayName": "Ruby and Rails Toolkit",
   "description": "Ruby and Ruby on Rails features for VSC",
-  "repository": "https://github.com/iRoninIT/ironin-vsc-ruby-rails",
-  "version": "0.4.1",
+  "repository": "https://github.com/iRoninIT/vsc-ruby-rails",
+  "version": "0.4.2",
   "publisher": "iRoninIT",
+  "website": "https://www.iRonin.it",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.91.1"
@@ -48,7 +49,15 @@
       },
       {
         "command": "ruby.addRdbgLaunchConfig",
-        "title": "💎 Add rdbg Launch Config"
+        "title": "💎 Install rdbg Launch Config"
+      },
+      {
+        "command": "ruby.addRubyTasks",
+        "title": "💎 Install Tasks"
+      },
+      {
+        "command": "ruby.addRailsDebugConfig",
+        "title": "💎 Install Rails Debug Config"
       }
     ]
   },

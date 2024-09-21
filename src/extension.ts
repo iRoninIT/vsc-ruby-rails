@@ -94,17 +94,18 @@ export function activate(context: vscode.ExtensionContext) {
 		);
 	});
 
-	// Register the new command
-	const addRdbgLaunchConfigCommand = 'ruby.addRdbgLaunchConfig';
-	context.subscriptions.push(
-		vscode.commands.registerCommand(addRdbgLaunchConfigCommand, addRdbgLaunchConfig)
-	);
+	// Register custom commands
+	const customCommands = [
+		{ command: 'ruby.addRdbgLaunchConfig', callback: addRdbgLaunchConfig },
+		{ command: 'ruby.addRubyTasks', callback: () => addRubyTasks(context) },
+		{ command: 'ruby.addRailsDebugConfig', callback: addRailsDebugConfig }
+	];
 
-	// Register the new command for adding Rails debug configuration
-	const addRailsDebugConfigCommand = 'ruby.addRailsDebugConfig';
-	context.subscriptions.push(
-		vscode.commands.registerCommand(addRailsDebugConfigCommand, addRailsDebugConfig)
-	);
+	customCommands.forEach(({ command, callback }) => {
+		context.subscriptions.push(
+			vscode.commands.registerCommand(command, callback)
+		);
+	});
 
 	context.subscriptions.push(taskProvider);
 
@@ -235,6 +236,7 @@ async function addRailsDebugConfig() {
 		let binDebugContent = fs.readFileSync(binDebugPath, 'utf8');
 		binDebugContent = binDebugContent.replace(/Procfile\.dev/g, 'Procfile.debug');
 		fs.writeFileSync(binDebugPath, binDebugContent, 'utf8');
+		vscode.window.showInformationMessage('bin/debug created');
 	} else {
 		vscode.window.showWarningMessage('bin/dev not found.');
 	}
@@ -248,9 +250,60 @@ async function addRailsDebugConfig() {
 				return `#${match}\nweb:${p1}rdbg -n --open -c -- bin/rails${p2}`;
 			});
 		fs.writeFileSync(procfileDebugPath, procfileDebugContent, 'utf8');
+		vscode.window.showInformationMessage('Procfile.debug created');
 	} else {
 		vscode.window.showWarningMessage('Procfile.dev not found.');
 	}
+}
 
-	vscode.window.showInformationMessage('Debug configurations added successfully.');
+async function addRubyTasks(context: vscode.ExtensionContext) {
+	const workspaceFolders = vscode.workspace.workspaceFolders;
+	if (!workspaceFolders) {
+		vscode.window.showErrorMessage('No workspace folder found.');
+		return;
+	}
+
+	const tasksJsonPath = path.join(workspaceFolders[0].uri.fsPath, '.vscode', 'tasks.json');
+	let tasksConfig: any;
+
+	const extensionPath = context.extensionPath;
+	const rubyTasksPath = path.join(extensionPath, 'dist', 'rubyTasks.json');
+	let rubyTasks: any[] = [];
+
+	if (fs.existsSync(rubyTasksPath)) {
+		const rubyTasksContent = fs.readFileSync(rubyTasksPath, 'utf8');
+		rubyTasks = JSON.parse(rubyTasksContent);
+	} else {
+		vscode.window.showErrorMessage('rubyTasks.json not found.');
+		return;
+	}
+
+	if (fs.existsSync(tasksJsonPath)) {
+		const tasksContent = fs.readFileSync(tasksJsonPath, 'utf8');
+		tasksConfig = JSON.parse(tasksContent);
+
+		// Build a dictionary of existing commands
+		const existingCommands = new Set(tasksConfig.tasks.map((task: any) => task.command));
+
+		// Add new tasks from rubyTasks.json if they don't already exist
+		tasksConfig.tasks = tasksConfig.tasks || [];
+		rubyTasks.forEach(task => {
+			if (!existingCommands.has(task.command)) {
+				tasksConfig.tasks.push(task);
+			}
+		});
+
+		fs.writeFileSync(tasksJsonPath, JSON.stringify(tasksConfig, null, 4), 'utf8');
+	} else {
+		// Create tasks.json with ruby tasks
+		tasksConfig = {
+			version: "2.0.0",
+			tasks: rubyTasks
+		};
+
+		fs.mkdirSync(path.dirname(tasksJsonPath), { recursive: true });
+		fs.writeFileSync(tasksJsonPath, JSON.stringify(tasksConfig, null, 4), 'utf8');
+	}
+
+	vscode.window.showInformationMessage('tasks.json created with Ruby tasks');
 }

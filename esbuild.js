@@ -44,12 +44,20 @@ async function generateCommands() {
 		title: `💎 ${task.label}`
 	}));
 
+	// Array of custom command names
+	const customCommandNames = [
+		'ruby.addRdbgLaunchConfig',
+		'ruby.addRubyTasks',
+		'ruby.addRailsDebugConfig'
+	];
+
 	// Preserve existing custom commands
-	const customCommands = packageJson.contributes.commands.filter(cmd => cmd.command === 'ruby.addRdbgLaunchConfig');
+	const customCommands = packageJson.contributes.commands.filter(cmd =>
+		customCommandNames.includes(cmd.command)
+	);
 
 	// Merge generated and custom commands
 	packageJson.contributes.commands = [...commands, ...customCommands];
-
 
 	// Write back to package.json
 	fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), 'utf8');

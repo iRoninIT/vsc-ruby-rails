@@ -4,12 +4,19 @@ Simple extension for Visual Studio Code (VSC / VSCode) that adds sample Ruby and
 
 ## Features
 
-Currently implmented Ruby features (as tasks or commands):
+Currently implmented features (as tasks or commands):
+
+### Generic features
+
+- Install Tasks (command only)
 
 ### Ruby on Rails (RoR) features
 
-- Add Rails Debug Config
-- Add rdbg VSC launch config
+- Install Rails Debug Config (command only)
+- Install rdbg VSC launch config (command only)
+- Start Rails Server with `bin/rails server`
+- Start Rails: `bin/dev` (assuming it's already present)
+- Start Rails debug mode with: `bin/debug` (available after running `Add Rails Debug Config`)
 
 ### Ruby features
 
@@ -20,9 +27,17 @@ Currently implmented Ruby features (as tasks or commands):
 
 Easily add new tasks and commands by modifying `rubyTasks.json`
 
-![feature X](images/commands.png)
+![features](https://github.com/iRoninIT/vsc-ruby-rails/raw/main/images/commands.png)
 
-### Add rdbg VSC launch config
+### Install Tasks
+
+Creates or extends `.vscode/tasks.json` with all this [extensions tasks](https://github.com/iRoninIT/vsc-ruby-rails/blob/main/src/rubyTasks.json).
+
+It only adds tasks that are not already present in the file by comparing the `command`.
+
+Unfortunately the tasks added dynamically are not visible when you open `Tasks: Run Tasks`, only in `Show All Tasks`. Installing tasks make them more accessible.
+
+### Install rdbg VSC launch config
 
 Creates `.vscode/launch.json` if not present.
 Adds the following config to `.vscode/launch.json` if not present.
@@ -47,7 +62,7 @@ With `debug` gem installed (`Install Debug Gem` command) you can enable debuggin
 
 ### Add Rails Debug Config
 
-Assuming `bin/dev` and `Procfile.dev` exists.
+Assuming `bin/dev` and `Procfile.dev` exists - eg. when RoR app has Docker or devcontainers configured.
 
 Duplicates `bin/dev` to `bin/debug` and makes it execute `Procfile.debug` instead of `Procfile.dev`.
 
