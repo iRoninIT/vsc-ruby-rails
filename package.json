@@ -3,7 +3,7 @@
   "displayName": "Ruby and Rails Toolkit",
   "description": "Ruby and Ruby on Rails features for VSC",
   "repository": "https://github.com/iRoninIT/vsc-ruby-rails",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "publisher": "iRoninIT",
   "website": "https://www.iRonin.it",
   "icon": "images/icon.png",
