@@ -18,6 +18,7 @@ Currently implmented features (as tasks or commands):
 - Start Rails Console with `bin/rails c`
 - Start Rails: `bin/dev` (assuming it's already present)
 - Start Rails debug mode with: `bin/debug` (available after running `Add Rails Debug Config`)
+- Show Rails Routes with: `bin/rails routes`
 
 ### Ruby features
 

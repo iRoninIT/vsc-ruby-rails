@@ -36,7 +36,7 @@
     "condition": "isRubyFile"
   },
   {
-    "label": "Start Rails Server: bin/rails server",
+    "label": "Rails: Server",
     "type": "shell",
     "command": "bin/rails server",
     "presentation": {
@@ -50,7 +50,7 @@
     "condition": "hasBinRails"
   },
   {
-    "label": "Start Rails Console: bin/rails c",
+    "label": "Rails: Console",
     "type": "shell",
     "command": "bin/rails c",
     "presentation": {
@@ -64,7 +64,21 @@
     "condition": "hasBinRails"
   },
   {
-    "label": "Start Rails: bin/dev",
+    "label": "Rails: Routes",
+    "type": "shell",
+    "command": "bin/rails routes",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: bin/dev",
     "type": "shell",
     "command": "bin/dev",
     "presentation": {
@@ -78,7 +92,7 @@
     "condition": "hasBinDev"
   },
   {
-    "label": "Start Rails: bin/debug",
+    "label": "Rails: bin/debug",
     "type": "shell",
     "command": "bin/debug",
     "presentation": {
