@@ -3,7 +3,7 @@
   "displayName": "Ruby and Rails Toolkit",
   "description": "Ruby and Ruby on Rails features for VSC",
   "repository": "https://github.com/iRoninIT/vsc-ruby-rails",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "publisher": "iRoninIT",
   "website": "https://www.iRonin.it",
   "icon": "images/icon.png",
@@ -46,6 +46,10 @@
       {
         "command": "extension.runTask.Rails:Routes",
         "title": "💎 Rails: Routes"
+      },
+      {
+        "command": "extension.runTask.Rails:Clearcache",
+        "title": "💎 Rails: Clear cache"
       },
       {
         "command": "extension.runTask.Rails:bin/dev",

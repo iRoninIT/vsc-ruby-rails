@@ -78,6 +78,20 @@
     "condition": "hasBinRails"
   },
   {
+    "label": "Rails: Clear cache",
+    "type": "shell",
+    "command": "bin/rails runner 'Rails.cache.clear'",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
     "label": "Rails: bin/dev",
     "type": "shell",
     "command": "bin/dev",

@@ -12,20 +12,21 @@ Currently implmented features (as tasks or commands):
 
 ### Ruby on Rails (RoR) features
 
-- Install Rails Debug Config (command only)
-- Install rdbg VSC launch config (command only)
-- Start Rails Server with `bin/rails server`
-- Start Rails Console with `bin/rails c`
-- Start Rails: `bin/dev` (assuming it's already present)
-- Start Rails debug mode with: `bin/debug` (available after running `Add Rails Debug Config`)
-- Show Rails Routes with: `bin/rails routes`
+- Install Rails Debug Config (command only) via `Add Rails Debug Config` command
+- Install rdbg VSC launch config (command only) via `Install rdbg VSC launch config` command
+- Start Rails Server with `bin/rails server` via `Rails: Server` task
+- Start Rails Console with `bin/rails c` via `Rails: Console` task
+- Start Rails: `bin/dev` (assuming it's already present) via `Rails: Dev` task
+- Start Rails debug mode with: `bin/debug` (available after running `Add Rails Debug Config`) via `Rails: Debug` task
+- Show Rails Routes with: `bin/rails routes` via `Rails: Routes` task
+- Clear Rails cache with: `bin/rails runner 'Rails.cache.clear'` via `Rails: Clear cache` task
 
 ### Ruby features
 
-- Run Ruby File
-- Show Ruby Version
-- Bundle Install
-- Install Debug Gem
+- Run Ruby File via `Ruby: Run file` command
+- Show Ruby Version via `Ruby: Show version` command
+- Bundle Install via `Ruby: Bundle install` command
+- Install Debug Gem via `Ruby: Install debug gem` command
 
 Easily add new tasks and commands by modifying `rubyTasks.json`
 
