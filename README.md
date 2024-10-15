@@ -20,6 +20,7 @@ Currently implmented features (as tasks or commands):
 - Start Rails debug mode with: `bin/debug` (available after running `Add Rails Debug Config`) via `Rails: Debug` task
 - Show Rails Routes with: `bin/rails routes` via `Rails: Routes` task
 - Clear Rails cache with: `bin/rails runner 'Rails.cache.clear'` via `Rails: Clear cache` task
+- Run Rails DB Migrate with: `bin/rails db:migrate` via `Rails: DB Migrate` task
 
 ### Ruby features
 

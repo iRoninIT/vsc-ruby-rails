@@ -64,6 +64,20 @@
     "condition": "hasBinRails"
   },
   {
+    "label": "Rails: DB Migrate",
+    "type": "shell",
+    "command": "bin/rails db:migrate",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
     "label": "Rails: Routes",
     "type": "shell",
     "command": "bin/rails routes",
