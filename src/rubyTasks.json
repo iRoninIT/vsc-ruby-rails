@@ -78,6 +78,62 @@
     "condition": "hasBinRails"
   },
   {
+    "label": "Rails: DB Create",
+    "type": "shell",
+    "command": "bin/rails db:create",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: DB Drop",
+    "type": "shell",
+    "command": "bin/rails db:drop",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: DB Seed",
+    "type": "shell",
+    "command": "bin/rails db:seed",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: DB Rollback",
+    "type": "shell",
+    "command": "bin/rails db:rollback",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
     "label": "Rails: Routes",
     "type": "shell",
     "command": "bin/rails routes",
