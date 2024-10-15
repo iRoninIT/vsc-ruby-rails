@@ -92,9 +92,37 @@
     "condition": "hasBinRails"
   },
   {
+    "label": "Rails: DB Console",
+    "type": "shell",
+    "command": "bin/rails dbconsole",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
     "label": "Rails: DB Drop",
     "type": "shell",
     "command": "bin/rails db:drop",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: DB Reset",
+    "type": "shell",
+    "command": "bin/rails db:reset",
     "presentation": {
       "reveal": "always",
       "panel": "new"
@@ -188,5 +216,45 @@
     ],
     "dependsOn": "BundleInstall",
     "condition": "hasBinDev"
+  },
+  {
+    "label": "Rails: Assets Precompile",
+    "type": "shell",
+    "command": "bin/rails assets:precompile",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: Test",
+    "type": "shell",
+    "command": "bin/rails test",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: Log Tail",
+    "type": "shell",
+    "command": "tail -f log/development.log",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [],
+    "dependsOn": "BundleInstall",
+    "condition": "hasLogFile"
   }
 ]

@@ -20,7 +20,15 @@ Currently implmented features (as tasks or commands):
 - Start Rails debug mode with: `bin/debug` (available after running `Add Rails Debug Config`) via `Rails: Debug` task
 - Show Rails Routes with: `bin/rails routes` via `Rails: Routes` task
 - Clear Rails cache with: `bin/rails runner 'Rails.cache.clear'` via `Rails: Clear cache` task
+- Run Rails DB Create with: `bin/rails db:create` via `Rails: DB Create` task
+- Run Rails DB Seed with: `bin/rails db:seed` via `Rails: DB Seed` task
 - Run Rails DB Migrate with: `bin/rails db:migrate` via `Rails: DB Migrate` task
+- Run Rails DB Console with: `bin/rails dbconsole` via `Rails: DB Console` task
+- Run Rails DB Reset with: `bin/rails db:reset` via `Rails: DB Reset` task
+- Run Rails DB Drop with: `bin/rails db:drop` via `Rails: DB Drop` task
+- Run Rails Test with: `bin/rails test` via `Rails: Test` task
+- Run Rails Assets Precompile with: `bin/rails assets:precompile` via `Rails: Assets Precompile` task
+- Run Rails Log Tail with: `tail -f log/development.log` via `Rails: Log Tail` task
 
 ### Ruby features
 
