@@ -3,7 +3,7 @@
   "displayName": "Ruby and Rails Toolkit",
   "description": "Ruby and Ruby on Rails features for VSC",
   "repository": "https://github.com/iRoninIT/vsc-ruby-rails",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "publisher": "iRoninIT",
   "website": "https://www.iRonin.it",
   "icon": "images/icon.png",
@@ -98,6 +98,34 @@
       {
         "command": "extension.runTask.Rails:LogTail",
         "title": "💎 Rails: Log Tail"
+      },
+      {
+        "command": "extension.runTask.TailwindCSS:Install",
+        "title": "💎 TailwindCSS: Install"
+      },
+      {
+        "command": "extension.runTask.TailwindCSS:Build",
+        "title": "💎 TailwindCSS: Build"
+      },
+      {
+        "command": "extension.runTask.TailwindCSS:Build[Debug]",
+        "title": "💎 TailwindCSS: Build [Debug]"
+      },
+      {
+        "command": "extension.runTask.TailwindCSS:Watch",
+        "title": "💎 TailwindCSS: Watch"
+      },
+      {
+        "command": "extension.runTask.TailwindCSS:Watch[Debug]",
+        "title": "💎 TailwindCSS: Watch [Debug]"
+      },
+      {
+        "command": "extension.runTask.TailwindCSS:Watch[Poll]",
+        "title": "💎 TailwindCSS: Watch [Poll]"
+      },
+      {
+        "command": "extension.runTask.TailwindCSS:Watch[Always]",
+        "title": "💎 TailwindCSS: Watch [Always]"
       },
       {
         "command": "ruby.addRdbgLaunchConfig",

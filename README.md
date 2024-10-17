@@ -4,7 +4,7 @@ Simple extension for Visual Studio Code (VSC / VSCode) that adds sample Ruby and
 
 ## Features
 
-Currently implmented features (as tasks or commands):
+Currently implemented features (as tasks or commands):
 
 ### Generic features
 
@@ -37,6 +37,16 @@ Currently implmented features (as tasks or commands):
 - Bundle Install via `Ruby: Bundle install` command
 - Install Debug Gem via `Ruby: Install debug gem` command
 
+### TailwindCSS features
+
+- Install TailwindCSS with `bin/rails tailwindcss:install` via `TailwindCSS: Install` task
+- Build TailwindCSS with `bin/rails tailwindcss:build` via `TailwindCSS: Build` task
+- Build TailwindCSS for debug with `bin/rails tailwindcss:build[debug]` via `TailwindCSS: Build [Debug]` task
+- Watch TailwindCSS with `bin/rails tailwindcss:watch` via `TailwindCSS: Watch` task
+- Watch TailwindCSS for debug with `bin/rails tailwindcss:watch[debug]` via `TailwindCSS: Watch [Debug]` task
+- Watch TailwindCSS with polling with `bin/rails tailwindcss:watch[poll]` via `TailwindCSS: Watch [Poll]` task
+- Watch TailwindCSS always with `bin/rails tailwindcss:watch[always]` via `TailwindCSS: Watch [Always]` task
+
 Easily add new tasks and commands by modifying `rubyTasks.json`
 
 ![features](https://github.com/iRoninIT/vsc-ruby-rails/raw/main/images/commands.png)
@@ -47,16 +57,16 @@ Creates or extends `.vscode/tasks.json` with all this [extensions tasks](https:/
 
 It only adds tasks that are not already present in the file by comparing the `command`.
 
-Unfortunately the tasks added dynamically are not visible when you open `Tasks: Run Tasks`, only in `Show All Tasks`. Installing tasks make them more accessible.
+Unfortunately the tasks added dynamically are not visible when you open `Tasks: Run Tasks`, only in `Show All Tasks`. Installing tasks makes them more accessible.
 
-The advantage of the extension tasks (over the installed) is that they are available only if their condition are met (eg. if `bin/rails` exists for `Run Rails Server` etc).
+The advantage of the extension tasks (over the installed) is that they are available only if their conditions are met (e.g., if `bin/rails` exists for `Run Rails Server`, etc.).
 
 ### Install rdbg VSC launch config
 
 Creates `.vscode/launch.json` if not present.
 Adds the following config to `.vscode/launch.json` if not present.
 
-With `debug` gem installed (`Install Debug Gem` command) you can enable debugging for Ruby scrips and RoR apps by simply placing breakpoints in VSC and running `Attach with rdbg`.
+With `debug` gem installed (`Install Debug Gem` command) you can enable debugging for Ruby scripts and RoR apps by simply placing breakpoints in VSC and running `Attach with rdbg`.
 
 ```json
 {
@@ -76,7 +86,7 @@ With `debug` gem installed (`Install Debug Gem` command) you can enable debuggin
 
 ### Add Rails Debug Config
 
-Assuming `bin/dev` and `Procfile.dev` exists - eg. when RoR app has Docker or devcontainers configured.
+Assuming `bin/dev` and `Procfile.dev` exist—for example, when RoR app has Docker or devcontainers configured.
 
 Duplicates `bin/dev` to `bin/debug` and makes it execute `Procfile.debug` instead of `Procfile.dev`.
 

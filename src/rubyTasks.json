@@ -256,5 +256,96 @@
     "problemMatcher": [],
     "dependsOn": "BundleInstall",
     "condition": "hasLogFile"
+  },
+  {
+    "label": "TailwindCSS: Install",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "TailwindCSS: Build",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:build",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "TailwindCSS: Build [Debug]",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:build[debug]",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "TailwindCSS: Watch",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:watch",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "TailwindCSS: Watch [Debug]",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:watch[debug]",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "TailwindCSS: Watch [Poll]",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:watch[poll]",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "TailwindCSS: Watch [Always]",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:watch[always]",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
   }
 ]
