@@ -2,6 +2,9 @@
 
 Simple extension for Visual Studio Code (VSC / VSCode) that adds sample Ruby and Ruby on Rails (RoR) features.
 
+![features](https://github.com/iRoninIT/vsc-ruby-rails/raw/main/images/commands-rails.png)
+![features](https://github.com/iRoninIT/vsc-ruby-rails/raw/main/images/commands-ruby.png)
+
 ## Features
 
 Currently implemented features (as tasks or commands):
@@ -48,8 +51,6 @@ Currently implemented features (as tasks or commands):
 - Watch TailwindCSS always with `bin/rails tailwindcss:watch[always]` via `TailwindCSS: Watch [Always]` task
 
 Easily add new tasks and commands by modifying `rubyTasks.json`
-
-![features](https://github.com/iRoninIT/vsc-ruby-rails/raw/main/images/commands.png)
 
 ### Install Tasks
 
