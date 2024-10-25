@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.12.9
+
+### Added
+
+- **Rails Tasks**
+  - `Rails: Fix AI timestamps in db migrations` - Renames user selected Rails DB migration files to ensure timestamps in the filenames conform to the Ruby on Rails format (YYYYMMDDHHmmss) and match the file creation time. Useful for migrations created with AI where the timestamp is usually in the past.
+
 ## 0.11.0
 
 ### Added

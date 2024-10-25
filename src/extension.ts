@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 
 import * as path from 'path';
 import * as fs from 'fs';
+import * as child_process from 'child_process';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -28,12 +29,14 @@ export function activate(context: vscode.ExtensionContext) {
 		const binRailsExists = workspaceFolders ? await hasBin(workspaceFolders[0], 'rails') : false;
 		const binDevExists = workspaceFolders ? await hasBin(workspaceFolders[0], 'dev') : false;
 		const binDebugExists = workspaceFolders ? await hasBin(workspaceFolders[0], 'debug') : false;
+		const dbMigrateExists = workspaceFolders ? await hasDbMigrateFolder(workspaceFolders[0]) : false;
 		const isRuby = await isRubyFile();
 		const environmentVariables = {
 			hasGemfile: gemfileExists,
 			hasBinRails: binRailsExists,
 			hasBinDev: binDevExists,
 			hasBinDebug: binDebugExists,
+			hasDbMigrateFolder: dbMigrateExists,
 			isRubyFile: isRuby
 		};
 		setContextKeys(environmentVariables);
@@ -98,7 +101,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const customCommands = [
 		{ command: 'ruby.addRdbgLaunchConfig', callback: addRdbgLaunchConfig },
 		{ command: 'ruby.addRubyTasks', callback: () => addRubyTasks(context) },
-		{ command: 'ruby.addRailsDebugConfig', callback: addRailsDebugConfig }
+		{ command: 'ruby.addRailsDebugConfig', callback: addRailsDebugConfig },
 	];
 
 	customCommands.forEach(({ command, callback }) => {
@@ -106,6 +109,78 @@ export function activate(context: vscode.ExtensionContext) {
 			vscode.commands.registerCommand(command, callback)
 		);
 	});
+
+	// Register the new command for fixing AI timestamps in db migrations
+	const fixAITimestampsinDBMigrations = vscode.commands.registerCommand('ironin.fixAITimestampsinDBMigrations', async (fileUris?: vscode.Uri[]) => {
+		let filesToProcess: vscode.Uri[] = [];
+
+		if (fileUris && fileUris.length > 0) {
+			filesToProcess = fileUris;
+		} else {
+			const editor = vscode.window.activeTextEditor;
+			if (editor) {
+				filesToProcess = [editor.document.uri];
+			} else {
+				vscode.window.showErrorMessage('No files selected to fix timestamps.');
+				return;
+			}
+		}
+
+		// Filter files to ensure they are in 'db/migrate' and have the correct extension
+		const workspaceFolders = vscode.workspace.workspaceFolders;
+		if (!workspaceFolders) {
+			vscode.window.showErrorMessage('No workspace folder found.');
+			return;
+		}
+
+		const workspacePath = workspaceFolders[0].uri.fsPath;
+
+		const migrateDir = path.join(workspacePath, 'db', 'migrate');
+		let renamedFiles = 0;
+
+		filesToProcess.forEach(fileUri => {
+			const filePath = fileUri.fsPath;
+			if (!filePath.startsWith(migrateDir)) {
+				vscode.window.showWarningMessage(`Skipping ${path.basename(filePath)} as it's not in db/migrate directory.`);
+				return;
+			}
+
+			const fileName = path.basename(filePath);
+			const match = fileName.match(/^(\d{14})_(.+)\.rb$/);
+
+			if (match) {
+				const timestamp = match[1];
+				const creationTime = fs.statSync(filePath).birthtime;
+				const formattedCreationTime = formatLocalDate(creationTime);
+
+				if (timestamp !== formattedCreationTime) {
+					const newFileName = `${formattedCreationTime}_${match[2]}.rb`;
+					const newFilePath = path.join(migrateDir, newFileName);
+
+					try {
+						fs.renameSync(filePath, newFilePath);
+						vscode.window.showInformationMessage(`Renamed ${fileName} to ${newFileName}`);
+						renamedFiles++;
+					} catch (renameErr) {
+						console.error(`Failed to rename ${fileName}:`, renameErr);
+						vscode.window.showErrorMessage(`Failed to rename ${fileName}.`);
+					}
+				} else {
+					vscode.window.showInformationMessage(`Timestamp for ${fileName} is already correct.`);
+				}
+			} else {
+				vscode.window.showWarningMessage(`Skipping ${fileName} as it does not match the migration file pattern.`);
+			}
+		});
+
+		if (renamedFiles > 0) {
+			vscode.window.showInformationMessage(`Fixed ${renamedFiles} migration timestamp(s).`);
+		} else {
+			vscode.window.showInformationMessage('No migration timestamps needed fixing.');
+		}
+	});
+
+	context.subscriptions.push(fixAITimestampsinDBMigrations);
 
 	context.subscriptions.push(taskProvider);
 
@@ -157,11 +232,28 @@ async function isRubyFile(): Promise<boolean> {
 	return document.languageId === 'ruby';
 }
 
-// New: Set context keys based on environment variables
+// Set context keys based on environment variables
 function setContextKeys(env: { [key: string]: boolean }) {
 	Object.keys(env).forEach(key => {
 		vscode.commands.executeCommand('setContext', key, env[key]);
 	});
+}
+
+/**
+ * Formats a Date object into a string with format YYYYMMDDHHmmss in local time.
+ * @param date - The Date object to format.
+ * @returns A string representing the formatted date.
+ */
+function formatLocalDate(date: Date): string {
+	const pad = (n: number) => n.toString().padStart(2, '0');
+	const year = date.getFullYear();
+	const month = pad(date.getMonth() + 1); // Months are zero-based
+	const day = pad(date.getDate());
+	const hours = pad(date.getHours());
+	const minutes = pad(date.getMinutes());
+	const seconds = pad(date.getSeconds());
+
+	return `${year}${month}${day}${hours}${minutes}${seconds}`;
 }
 
 async function addRdbgLaunchConfig() {
@@ -213,7 +305,7 @@ async function addRdbgLaunchConfig() {
 	}
 	fs.writeFileSync(launchJsonPath, JSON.stringify(launchConfig, null, 4), 'utf8');
 	vscode.window.showInformationMessage('launch.json created with rdbg configurations');
-	vscode.window.showInformationMessage('remember to install the debug gem (available as a command)');
+	vscode.window.showInformationMessage('Remember to install the debug gem (available as a command)');
 }
 
 // Implement the addRailsDebugConfig command
@@ -282,7 +374,7 @@ async function addRubyTasks(context: vscode.ExtensionContext) {
 		const tasksContent = fs.readFileSync(tasksJsonPath, 'utf8');
 		tasksConfig = JSON.parse(tasksContent);
 
-		// Build a dictionary of existing commands
+		// Build a set of existing commands
 		const existingCommands = new Set(tasksConfig.tasks.map((task: any) => task.command));
 
 		// Add new tasks from rubyTasks.json if they don't already exist
@@ -306,4 +398,12 @@ async function addRubyTasks(context: vscode.ExtensionContext) {
 	}
 
 	vscode.window.showInformationMessage('tasks.json created with Ruby tasks');
+}
+
+// Helper function to check for db/migrate folder
+async function hasDbMigrateFolder(workspaceFolder: vscode.WorkspaceFolder): Promise<boolean> {
+	const dbMigratePath = path.join(workspaceFolder.uri.fsPath, 'db', 'migrate');
+	return fs.promises.access(dbMigratePath, fs.constants.F_OK)
+		.then(() => true)
+		.catch(() => false);
 }

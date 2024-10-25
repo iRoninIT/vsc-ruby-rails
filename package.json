@@ -3,7 +3,7 @@
   "displayName": "Ruby and Rails Toolkit",
   "description": "Ruby and Ruby on Rails features for VSC",
   "repository": "https://github.com/iRoninIT/vsc-ruby-rails",
-  "version": "0.11.0",
+  "version": "0.12.9",
   "publisher": "iRoninIT",
   "website": "https://www.iRonin.it",
   "icon": "images/icon.png",
@@ -14,7 +14,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onStartupFinished"
+    "onStartupFinished",
+    "onCommand:ironin.fixAITimestampsinDBMigrations"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -128,6 +129,11 @@
         "title": "💎 TailwindCSS: Watch [Always]"
       },
       {
+        "command": "ironin.fixAITimestampsinDBMigrations",
+        "title": "💎 Rails: Fix AI Timestamps in DB Migrations",
+        "category": "Ruby on Rails"
+      },
+      {
         "command": "ruby.addRdbgLaunchConfig",
         "title": "💎 Install rdbg Launch Config"
       },
@@ -139,7 +145,16 @@
         "command": "ruby.addRailsDebugConfig",
         "title": "💎 Install Rails Debug Config"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "ironin.fixAITimestampsinDBMigrations",
+          "when": "resourceLangId == ruby",
+          "group": "z_rails"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
@@ -178,6 +193,7 @@
     "vsce": "^2.15.0"
   },
   "files": [
-    "dist"
+    "dist",
+    "scripts"
   ]
 }

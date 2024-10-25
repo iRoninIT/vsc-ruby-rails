@@ -26,6 +26,14 @@ const esbuildProblemMatcherPlugin = {
 	},
 };
 
+// Updated: Include the custom fixRailsMigrationTimestamps command
+const customCommandNames = [
+	'ruby.addRdbgLaunchConfig',
+	'ruby.addRubyTasks',
+	'ruby.addRailsDebugConfig',
+	'ironin.fixAITimestampsinDBMigrations' // Added this line
+];
+
 // Added: Generate commands from rubyTasks.json
 async function generateCommands() {
 	console.log('generateCommands called'); // Added logging
@@ -44,14 +52,7 @@ async function generateCommands() {
 		title: `💎 ${task.label}`
 	}));
 
-	// Array of custom command names
-	const customCommandNames = [
-		'ruby.addRdbgLaunchConfig',
-		'ruby.addRubyTasks',
-		'ruby.addRailsDebugConfig'
-	];
-
-	// Preserve existing custom commands
+	// Add the custom fixRailsMigrationTimestamps command
 	const customCommands = packageJson.contributes.commands.filter(cmd =>
 		customCommandNames.includes(cmd.command)
 	);
@@ -97,7 +98,7 @@ async function main() {
 		fs.watch(srcPath, { recursive: true }, async (eventType, filename) => {
 			if (filename) {
 				console.log(`[watch] ${filename} changed, rebuilding...`);
-				await  generateCommands().catch((err) => console.error(err));
+				await generateCommands().catch((err) => console.error(err));
 			}
 		});
 	} else {
@@ -113,6 +114,6 @@ main().catch(e => {
 
 // Copy rubyTasks.json to dist
 fs.copyFileSync(
-    path.join(__dirname, 'src', 'rubyTasks.json'),
-    path.join(__dirname, 'dist', 'rubyTasks.json')
+	path.join(__dirname, 'src', 'rubyTasks.json'),
+	path.join(__dirname, 'dist', 'rubyTasks.json')
 );

@@ -2,16 +2,14 @@
 
 Simple extension for Visual Studio Code (VSC / VSCode) that adds sample Ruby and Ruby on Rails (RoR) features.
 
-![features](https://github.com/iRoninIT/vsc-ruby-rails/raw/main/images/commands-rails.png)
-![features](https://github.com/iRoninIT/vsc-ruby-rails/raw/main/images/commands-ruby.png)
+![Fix AI Timestamps in DB Migrations](https://github.com/iRoninIT/vsc-ruby-rails/raw/main/images/fix-ai-timestamps.png)
+![Rails Commands](https://github.com/iRoninIT/vsc-ruby-rails/raw/main/images/commands-rails.png)
+![Ruby Commands](https://github.com/iRoninIT/vsc-ruby-rails/raw/main/images/commands-ruby.png)
+![TailwindCSS Commands](https://github.com/iRoninIT/vsc-ruby-rails/raw/main/images/tailwind-commands.png)
 
 ## Features
 
 Currently implemented features (as tasks or commands):
-
-### Generic features
-
-- Install Tasks (command only)
 
 ### Ruby on Rails (RoR) features
 
@@ -32,6 +30,7 @@ Currently implemented features (as tasks or commands):
 - Run Rails Test with: `bin/rails test` via `Rails: Test` task
 - Run Rails Assets Precompile with: `bin/rails assets:precompile` via `Rails: Assets Precompile` task
 - Run Rails Log Tail with: `tail -f log/development.log` via `Rails: Log Tail` task
+- Fix timestamps in Rails DB migrations files with `Rails: Fix AI timestamps in db migrations` task. Renames user selected Rails DB migration files to ensure timestamps in the filenames conform to the Ruby on Rails format (YYYYMMDDHHmmss) and match the file creation time. Useful for migrations created with AI where the timestamp is usually in the past.
 
 ### Ruby features
 
@@ -52,13 +51,17 @@ Currently implemented features (as tasks or commands):
 
 Easily add new tasks and commands by modifying `rubyTasks.json`
 
+### Generic features
+
+- Install Tasks (command only)
+
 ### Install Tasks
 
 Creates or extends `.vscode/tasks.json` with all this [extensions tasks](https://github.com/iRoninIT/vsc-ruby-rails/blob/main/src/rubyTasks.json).
 
 It only adds tasks that are not already present in the file by comparing the `command`.
 
-Unfortunately the tasks added dynamically are not visible when you open `Tasks: Run Tasks`, only in `Show All Tasks`. Installing tasks makes them more accessible.
+Unfortunately, the tasks added dynamically are not visible when you open `Tasks: Run Tasks`, only in `Show All Tasks`. Installing tasks makes them more accessible.
 
 The advantage of the extension tasks (over the installed) is that they are available only if their conditions are met (e.g., if `bin/rails` exists for `Run Rails Server`, etc.).
 
@@ -67,7 +70,7 @@ The advantage of the extension tasks (over the installed) is that they are avail
 Creates `.vscode/launch.json` if not present.
 Adds the following config to `.vscode/launch.json` if not present.
 
-With `debug` gem installed (`Install Debug Gem` command) you can enable debugging for Ruby scripts and RoR apps by simply placing breakpoints in VSC and running `Attach with rdbg`.
+With `debug` gem installed (`Install Debug Gem` command), you can enable debugging for Ruby scripts and RoR apps by simply placing breakpoints in VSC and running `Attach with rdbg`.
 
 ```json
 {
