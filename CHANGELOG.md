@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.0.0
+
+- Added all Ruby on Rails 8 tasks and commands.
+- General cleanup.
+
 ## 0.12.9
 
 ### Added

@@ -3,7 +3,7 @@
   "displayName": "Ruby and Rails Toolkit",
   "description": "Ruby and Ruby on Rails features for VSC",
   "repository": "https://github.com/iRoninIT/vsc-ruby-rails",
-  "version": "0.12.9",
+  "version": "1.0.0",
   "publisher": "iRoninIT",
   "website": "https://www.iRonin.it",
   "icon": "images/icon.png",
@@ -37,48 +37,8 @@
         "title": "💎 Run Ruby File"
       },
       {
-        "command": "extension.runTask.Rails:Server",
-        "title": "💎 Rails: Server"
-      },
-      {
-        "command": "extension.runTask.Rails:Console",
-        "title": "💎 Rails: Console"
-      },
-      {
-        "command": "extension.runTask.Rails:DBMigrate",
-        "title": "💎 Rails: DB Migrate"
-      },
-      {
-        "command": "extension.runTask.Rails:DBCreate",
-        "title": "💎 Rails: DB Create"
-      },
-      {
-        "command": "extension.runTask.Rails:DBConsole",
-        "title": "💎 Rails: DB Console"
-      },
-      {
-        "command": "extension.runTask.Rails:DBDrop",
-        "title": "💎 Rails: DB Drop"
-      },
-      {
-        "command": "extension.runTask.Rails:DBReset",
-        "title": "💎 Rails: DB Reset"
-      },
-      {
-        "command": "extension.runTask.Rails:DBSeed",
-        "title": "💎 Rails: DB Seed"
-      },
-      {
-        "command": "extension.runTask.Rails:DBRollback",
-        "title": "💎 Rails: DB Rollback"
-      },
-      {
-        "command": "extension.runTask.Rails:Routes",
-        "title": "💎 Rails: Routes"
-      },
-      {
-        "command": "extension.runTask.Rails:Clearcache",
-        "title": "💎 Rails: Clear cache"
+        "command": "extension.runTask.Rails:Clearcacherunner",
+        "title": "💎 Rails: Clear cache runner"
       },
       {
         "command": "extension.runTask.Rails:bin/dev",
@@ -89,44 +49,440 @@
         "title": "💎 Rails: bin/debug"
       },
       {
-        "command": "extension.runTask.Rails:AssetsPrecompile",
-        "title": "💎 Rails: Assets Precompile"
+        "command": "extension.runTask.Rails:server",
+        "title": "💎 Rails: server"
       },
       {
-        "command": "extension.runTask.Rails:Test",
-        "title": "💎 Rails: Test"
+        "command": "extension.runTask.Rails:console",
+        "title": "💎 Rails: console"
       },
       {
         "command": "extension.runTask.Rails:LogTail",
         "title": "💎 Rails: Log Tail"
       },
       {
-        "command": "extension.runTask.TailwindCSS:Install",
-        "title": "💎 TailwindCSS: Install"
+        "command": "extension.runTask.Rails:DBConsole",
+        "title": "💎 Rails: DB Console"
       },
       {
-        "command": "extension.runTask.TailwindCSS:Build",
-        "title": "💎 TailwindCSS: Build"
+        "command": "extension.runTask.Rails:about",
+        "title": "💎 Rails: about"
       },
       {
-        "command": "extension.runTask.TailwindCSS:Build[Debug]",
-        "title": "💎 TailwindCSS: Build [Debug]"
+        "command": "extension.runTask.Rails:action_mailbox:ingress:exim",
+        "title": "💎 Rails: action_mailbox:ingress:exim"
       },
       {
-        "command": "extension.runTask.TailwindCSS:Watch",
-        "title": "💎 TailwindCSS: Watch"
+        "command": "extension.runTask.Rails:action_mailbox:ingress:postfix",
+        "title": "💎 Rails: action_mailbox:ingress:postfix"
       },
       {
-        "command": "extension.runTask.TailwindCSS:Watch[Debug]",
-        "title": "💎 TailwindCSS: Watch [Debug]"
+        "command": "extension.runTask.Rails:action_mailbox:ingress:qmail",
+        "title": "💎 Rails: action_mailbox:ingress:qmail"
       },
       {
-        "command": "extension.runTask.TailwindCSS:Watch[Poll]",
-        "title": "💎 TailwindCSS: Watch [Poll]"
+        "command": "extension.runTask.Rails:action_mailbox:install",
+        "title": "💎 Rails: action_mailbox:install"
       },
       {
-        "command": "extension.runTask.TailwindCSS:Watch[Always]",
-        "title": "💎 TailwindCSS: Watch [Always]"
+        "command": "extension.runTask.Rails:action_mailbox:install:migrations",
+        "title": "💎 Rails: action_mailbox:install:migrations"
+      },
+      {
+        "command": "extension.runTask.Rails:action_text:install",
+        "title": "💎 Rails: action_text:install"
+      },
+      {
+        "command": "extension.runTask.Rails:action_text:install:migrations",
+        "title": "💎 Rails: action_text:install:migrations"
+      },
+      {
+        "command": "extension.runTask.Rails:active_storage:install",
+        "title": "💎 Rails: active_storage:install"
+      },
+      {
+        "command": "extension.runTask.Rails:app:template",
+        "title": "💎 Rails: app:template"
+      },
+      {
+        "command": "extension.runTask.Rails:app:update",
+        "title": "💎 Rails: app:update"
+      },
+      {
+        "command": "extension.runTask.Rails:assets:clean",
+        "title": "💎 Rails: assets:clean"
+      },
+      {
+        "command": "extension.runTask.Rails:assets:clobber",
+        "title": "💎 Rails: assets:clobber"
+      },
+      {
+        "command": "extension.runTask.Rails:AssetsPrecompile",
+        "title": "💎 Rails: Assets Precompile"
+      },
+      {
+        "command": "extension.runTask.Rails:assets:reveal",
+        "title": "💎 Rails: assets:reveal"
+      },
+      {
+        "command": "extension.runTask.Rails:assets:reveal:full",
+        "title": "💎 Rails: assets:reveal:full"
+      },
+      {
+        "command": "extension.runTask.Rails:boot",
+        "title": "💎 Rails: boot"
+      },
+      {
+        "command": "extension.runTask.Rails:cache_digests:dependencies",
+        "title": "💎 Rails: cache_digests:dependencies"
+      },
+      {
+        "command": "extension.runTask.Rails:cache_digests:nested_dependencies",
+        "title": "💎 Rails: cache_digests:nested_dependencies"
+      },
+      {
+        "command": "extension.runTask.Rails:credentials:diff",
+        "title": "💎 Rails: credentials:diff"
+      },
+      {
+        "command": "extension.runTask.Rails:credentials:edit",
+        "title": "💎 Rails: credentials:edit"
+      },
+      {
+        "command": "extension.runTask.Rails:credentials:show",
+        "title": "💎 Rails: credentials:show"
+      },
+      {
+        "command": "extension.runTask.Rails:cucumber:ok",
+        "title": "💎 Rails: cucumber:ok"
+      },
+      {
+        "command": "extension.runTask.Rails:cucumber:rerun",
+        "title": "💎 Rails: cucumber:rerun"
+      },
+      {
+        "command": "extension.runTask.Rails:cucumber:wip",
+        "title": "💎 Rails: cucumber:wip"
+      },
+      {
+        "command": "extension.runTask.Rails:db:create",
+        "title": "💎 Rails: db:create"
+      },
+      {
+        "command": "extension.runTask.Rails:db:drop",
+        "title": "💎 Rails: db:drop"
+      },
+      {
+        "command": "extension.runTask.Rails:db:encryption:init",
+        "title": "💎 Rails: db:encryption:init"
+      },
+      {
+        "command": "extension.runTask.Rails:db:environment:set",
+        "title": "💎 Rails: db:environment:set"
+      },
+      {
+        "command": "extension.runTask.Rails:db:fixtures:load",
+        "title": "💎 Rails: db:fixtures:load"
+      },
+      {
+        "command": "extension.runTask.Rails:db:migrate",
+        "title": "💎 Rails: db:migrate"
+      },
+      {
+        "command": "extension.runTask.Rails:db:migrate:down",
+        "title": "💎 Rails: db:migrate:down"
+      },
+      {
+        "command": "extension.runTask.Rails:db:migrate:redo",
+        "title": "💎 Rails: db:migrate:redo"
+      },
+      {
+        "command": "extension.runTask.Rails:db:migrate:status",
+        "title": "💎 Rails: db:migrate:status"
+      },
+      {
+        "command": "extension.runTask.Rails:db:migrate:up",
+        "title": "💎 Rails: db:migrate:up"
+      },
+      {
+        "command": "extension.runTask.Rails:db:prepare",
+        "title": "💎 Rails: db:prepare"
+      },
+      {
+        "command": "extension.runTask.Rails:db:reset",
+        "title": "💎 Rails: db:reset"
+      },
+      {
+        "command": "extension.runTask.Rails:db:rollback",
+        "title": "💎 Rails: db:rollback"
+      },
+      {
+        "command": "extension.runTask.Rails:db:schema:cache:clear",
+        "title": "💎 Rails: db:schema:cache:clear"
+      },
+      {
+        "command": "extension.runTask.Rails:db:schema:cache:dump",
+        "title": "💎 Rails: db:schema:cache:dump"
+      },
+      {
+        "command": "extension.runTask.Rails:db:schema:dump",
+        "title": "💎 Rails: db:schema:dump"
+      },
+      {
+        "command": "extension.runTask.Rails:db:schema:load",
+        "title": "💎 Rails: db:schema:load"
+      },
+      {
+        "command": "extension.runTask.Rails:db:seed",
+        "title": "💎 Rails: db:seed"
+      },
+      {
+        "command": "extension.runTask.Rails:db:seed:replant",
+        "title": "💎 Rails: db:seed:replant"
+      },
+      {
+        "command": "extension.runTask.Rails:db:setup",
+        "title": "💎 Rails: db:setup"
+      },
+      {
+        "command": "extension.runTask.Rails:db:system:change",
+        "title": "💎 Rails: db:system:change"
+      },
+      {
+        "command": "extension.runTask.Rails:db:version",
+        "title": "💎 Rails: db:version"
+      },
+      {
+        "command": "extension.runTask.Rails:destroy",
+        "title": "💎 Rails: destroy"
+      },
+      {
+        "command": "extension.runTask.Rails:dev:cache",
+        "title": "💎 Rails: dev:cache"
+      },
+      {
+        "command": "extension.runTask.Rails:devcontainer",
+        "title": "💎 Rails: devcontainer"
+      },
+      {
+        "command": "extension.runTask.Rails:encrypted:edit",
+        "title": "💎 Rails: encrypted:edit"
+      },
+      {
+        "command": "extension.runTask.Rails:encrypted:show",
+        "title": "💎 Rails: encrypted:show"
+      },
+      {
+        "command": "extension.runTask.Rails:importmap:install",
+        "title": "💎 Rails: importmap:install"
+      },
+      {
+        "command": "extension.runTask.Rails:initializers",
+        "title": "💎 Rails: initializers"
+      },
+      {
+        "command": "extension.runTask.Rails:log:clear",
+        "title": "💎 Rails: log:clear"
+      },
+      {
+        "command": "extension.runTask.Rails:middleware",
+        "title": "💎 Rails: middleware"
+      },
+      {
+        "command": "extension.runTask.Rails:notes",
+        "title": "💎 Rails: notes"
+      },
+      {
+        "command": "extension.runTask.Rails:restart",
+        "title": "💎 Rails: restart"
+      },
+      {
+        "command": "extension.runTask.Rails:routes",
+        "title": "💎 Rails: routes"
+      },
+      {
+        "command": "extension.runTask.Rails:runner",
+        "title": "💎 Rails: runner"
+      },
+      {
+        "command": "extension.runTask.Rails:secret",
+        "title": "💎 Rails: secret"
+      },
+      {
+        "command": "extension.runTask.Rails:solid_cable:install",
+        "title": "💎 Rails: solid_cable:install"
+      },
+      {
+        "command": "extension.runTask.Rails:solid_cache:install",
+        "title": "💎 Rails: solid_cache:install"
+      },
+      {
+        "command": "extension.runTask.Rails:solid_queue:install",
+        "title": "💎 Rails: solid_queue:install"
+      },
+      {
+        "command": "extension.runTask.Rails:solid_queue:start",
+        "title": "💎 Rails: solid_queue:start"
+      },
+      {
+        "command": "extension.runTask.Rails:stats",
+        "title": "💎 Rails: stats"
+      },
+      {
+        "command": "extension.runTask.Rails:stimulus:install",
+        "title": "💎 Rails: stimulus:install"
+      },
+      {
+        "command": "extension.runTask.Rails:stimulus:install:bun",
+        "title": "💎 Rails: stimulus:install:bun"
+      },
+      {
+        "command": "extension.runTask.Rails:stimulus:install:importmap",
+        "title": "💎 Rails: stimulus:install:importmap"
+      },
+      {
+        "command": "extension.runTask.Rails:stimulus:install:node",
+        "title": "💎 Rails: stimulus:install:node"
+      },
+      {
+        "command": "extension.runTask.Rails:stimulus:manifest:display",
+        "title": "💎 Rails: stimulus:manifest:display"
+      },
+      {
+        "command": "extension.runTask.Rails:stimulus:manifest:update",
+        "title": "💎 Rails: stimulus:manifest:update"
+      },
+      {
+        "command": "extension.runTask.Rails:tailwindcss:install",
+        "title": "💎 Rails: tailwindcss:install"
+      },
+      {
+        "command": "extension.runTask.Rails:tailwindcss:build",
+        "title": "💎 Rails: tailwindcss:build"
+      },
+      {
+        "command": "extension.runTask.Rails:tailwindcss:build[debug]",
+        "title": "💎 Rails: tailwindcss:build[debug]"
+      },
+      {
+        "command": "extension.runTask.Rails:tailwindcss:clobber",
+        "title": "💎 Rails: tailwindcss:clobber"
+      },
+      {
+        "command": "extension.runTask.Rails:tailwindcss:install",
+        "title": "💎 Rails: tailwindcss:install"
+      },
+      {
+        "command": "extension.runTask.Rails:tailwindcss:watch",
+        "title": "💎 Rails: tailwindcss:watch"
+      },
+      {
+        "command": "extension.runTask.Rails:tailwindcss:watch[debug]",
+        "title": "💎 Rails: tailwindcss:watch[debug]"
+      },
+      {
+        "command": "extension.runTask.Rails:tailwindcss:watch[poll]",
+        "title": "💎 Rails: tailwindcss:watch[poll]"
+      },
+      {
+        "command": "extension.runTask.Rails:tailwindcss:watch[always]",
+        "title": "💎 Rails: tailwindcss:watch[always]"
+      },
+      {
+        "command": "extension.runTask.Rails:Test",
+        "title": "💎 Rails: Test"
+      },
+      {
+        "command": "extension.runTask.Rails:test:all",
+        "title": "💎 Rails: test:all"
+      },
+      {
+        "command": "extension.runTask.Rails:test:channels",
+        "title": "💎 Rails: test:channels"
+      },
+      {
+        "command": "extension.runTask.Rails:test:controllers",
+        "title": "💎 Rails: test:controllers"
+      },
+      {
+        "command": "extension.runTask.Rails:test:db",
+        "title": "💎 Rails: test:db"
+      },
+      {
+        "command": "extension.runTask.Rails:test:functionals",
+        "title": "💎 Rails: test:functionals"
+      },
+      {
+        "command": "extension.runTask.Rails:test:generators",
+        "title": "💎 Rails: test:generators"
+      },
+      {
+        "command": "extension.runTask.Rails:test:helpers",
+        "title": "💎 Rails: test:helpers"
+      },
+      {
+        "command": "extension.runTask.Rails:test:integration",
+        "title": "💎 Rails: test:integration"
+      },
+      {
+        "command": "extension.runTask.Rails:test:jobs",
+        "title": "💎 Rails: test:jobs"
+      },
+      {
+        "command": "extension.runTask.Rails:test:mailboxes",
+        "title": "💎 Rails: test:mailboxes"
+      },
+      {
+        "command": "extension.runTask.Rails:test:mailers",
+        "title": "💎 Rails: test:mailers"
+      },
+      {
+        "command": "extension.runTask.Rails:test:models",
+        "title": "💎 Rails: test:models"
+      },
+      {
+        "command": "extension.runTask.Rails:test:units",
+        "title": "💎 Rails: test:units"
+      },
+      {
+        "command": "extension.runTask.Rails:time:zones",
+        "title": "💎 Rails: time:zones"
+      },
+      {
+        "command": "extension.runTask.Rails:tmp:clear",
+        "title": "💎 Rails: tmp:clear"
+      },
+      {
+        "command": "extension.runTask.Rails:tmp:create",
+        "title": "💎 Rails: tmp:create"
+      },
+      {
+        "command": "extension.runTask.Rails:turbo:install",
+        "title": "💎 Rails: turbo:install"
+      },
+      {
+        "command": "extension.runTask.Rails:turbo:install:bun",
+        "title": "💎 Rails: turbo:install:bun"
+      },
+      {
+        "command": "extension.runTask.Rails:turbo:install:importmap",
+        "title": "💎 Rails: turbo:install:importmap"
+      },
+      {
+        "command": "extension.runTask.Rails:turbo:install:node",
+        "title": "💎 Rails: turbo:install:node"
+      },
+      {
+        "command": "extension.runTask.Rails:version",
+        "title": "💎 Rails: version"
+      },
+      {
+        "command": "extension.runTask.Rails:yarn:install",
+        "title": "💎 Rails: yarn:install"
+      },
+      {
+        "command": "extension.runTask.Rails:zeitwerk:check",
+        "title": "💎 Rails: zeitwerk:check"
       },
       {
         "command": "ironin.fixAITimestampsinDBMigrations",
@@ -135,7 +491,7 @@
       },
       {
         "command": "ruby.addRdbgLaunchConfig",
-        "title": "💎 Install rdbg Launch Config"
+        "title": "💎 Rails: Install rdbg VSC Launch Config"
       },
       {
         "command": "ruby.addRubyTasks",
@@ -143,7 +499,7 @@
       },
       {
         "command": "ruby.addRailsDebugConfig",
-        "title": "💎 Install Rails Debug Config"
+        "title": "💎 Rails: Install Debug Config"
       }
     ],
     "menus": {

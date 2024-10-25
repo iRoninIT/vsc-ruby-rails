@@ -36,147 +36,7 @@
     "condition": "isRubyFile"
   },
   {
-    "label": "Rails: Server",
-    "type": "shell",
-    "command": "bin/rails server",
-    "presentation": {
-      "reveal": "always",
-      "panel": "new"
-    },
-    "problemMatcher": [
-      "$ruby"
-    ],
-    "dependsOn": "BundleInstall",
-    "condition": "hasBinRails"
-  },
-  {
-    "label": "Rails: Console",
-    "type": "shell",
-    "command": "bin/rails c",
-    "presentation": {
-      "reveal": "always",
-      "panel": "new"
-    },
-    "problemMatcher": [
-      "$ruby"
-    ],
-    "dependsOn": "BundleInstall",
-    "condition": "hasBinRails"
-  },
-  {
-    "label": "Rails: DB Migrate",
-    "type": "shell",
-    "command": "bin/rails db:migrate",
-    "presentation": {
-      "reveal": "always",
-      "panel": "new"
-    },
-    "problemMatcher": [
-      "$ruby"
-    ],
-    "dependsOn": "BundleInstall",
-    "condition": "hasBinRails"
-  },
-  {
-    "label": "Rails: DB Create",
-    "type": "shell",
-    "command": "bin/rails db:create",
-    "presentation": {
-      "reveal": "always",
-      "panel": "new"
-    },
-    "problemMatcher": [
-      "$ruby"
-    ],
-    "dependsOn": "BundleInstall",
-    "condition": "hasBinRails"
-  },
-  {
-    "label": "Rails: DB Console",
-    "type": "shell",
-    "command": "bin/rails dbconsole",
-    "presentation": {
-      "reveal": "always",
-      "panel": "new"
-    },
-    "problemMatcher": [
-      "$ruby"
-    ],
-    "dependsOn": "BundleInstall",
-    "condition": "hasBinRails"
-  },
-  {
-    "label": "Rails: DB Drop",
-    "type": "shell",
-    "command": "bin/rails db:drop",
-    "presentation": {
-      "reveal": "always",
-      "panel": "new"
-    },
-    "problemMatcher": [
-      "$ruby"
-    ],
-    "dependsOn": "BundleInstall",
-    "condition": "hasBinRails"
-  },
-  {
-    "label": "Rails: DB Reset",
-    "type": "shell",
-    "command": "bin/rails db:reset",
-    "presentation": {
-      "reveal": "always",
-      "panel": "new"
-    },
-    "problemMatcher": [
-      "$ruby"
-    ],
-    "dependsOn": "BundleInstall",
-    "condition": "hasBinRails"
-  },
-  {
-    "label": "Rails: DB Seed",
-    "type": "shell",
-    "command": "bin/rails db:seed",
-    "presentation": {
-      "reveal": "always",
-      "panel": "new"
-    },
-    "problemMatcher": [
-      "$ruby"
-    ],
-    "dependsOn": "BundleInstall",
-    "condition": "hasBinRails"
-  },
-  {
-    "label": "Rails: DB Rollback",
-    "type": "shell",
-    "command": "bin/rails db:rollback",
-    "presentation": {
-      "reveal": "always",
-      "panel": "new"
-    },
-    "problemMatcher": [
-      "$ruby"
-    ],
-    "dependsOn": "BundleInstall",
-    "condition": "hasBinRails"
-  },
-  {
-    "label": "Rails: Routes",
-    "type": "shell",
-    "command": "bin/rails routes",
-    "presentation": {
-      "reveal": "always",
-      "panel": "new"
-    },
-    "problemMatcher": [
-      "$ruby"
-    ],
-    "dependsOn": "BundleInstall",
-    "condition": "hasBinRails"
-  },
-  {
-    "label": "Rails: Clear cache",
+    "label": "Rails: Clear cache runner",
     "type": "shell",
     "command": "bin/rails runner 'Rails.cache.clear'",
     "presentation": {
@@ -186,7 +46,6 @@
     "problemMatcher": [
       "$ruby"
     ],
-    "dependsOn": "BundleInstall",
     "condition": "hasBinRails"
   },
   {
@@ -200,7 +59,6 @@
     "problemMatcher": [
       "$ruby"
     ],
-    "dependsOn": "BundleInstall",
     "condition": "hasBinDev"
   },
   {
@@ -214,8 +72,226 @@
     "problemMatcher": [
       "$ruby"
     ],
-    "dependsOn": "BundleInstall",
     "condition": "hasBinDev"
+  },
+  {
+    "label": "Rails: server",
+    "type": "shell",
+    "command": "bin/rails server",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: console",
+    "type": "shell",
+    "command": "bin/rails c",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: Log Tail",
+    "type": "shell",
+    "command": "tail -f log/development.log",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [],
+    "condition": "hasLogFile"
+  },
+  {
+    "label": "Rails: DB Console",
+    "type": "shell",
+    "command": "bin/rails dbconsole",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: about",
+    "type": "shell",
+    "command": "bin/rails about",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: action_mailbox:ingress:exim",
+    "type": "shell",
+    "command": "bin/rails action_mailbox:ingress:exim",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: action_mailbox:ingress:postfix",
+    "type": "shell",
+    "command": "bin/rails action_mailbox:ingress:postfix",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: action_mailbox:ingress:qmail",
+    "type": "shell",
+    "command": "bin/rails action_mailbox:ingress:qmail",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: action_mailbox:install",
+    "type": "shell",
+    "command": "bin/rails action_mailbox:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: action_mailbox:install:migrations",
+    "type": "shell",
+    "command": "bin/rails action_mailbox:install:migrations",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: action_text:install",
+    "type": "shell",
+    "command": "bin/rails action_text:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: action_text:install:migrations",
+    "type": "shell",
+    "command": "bin/rails action_text:install:migrations",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: active_storage:install",
+    "type": "shell",
+    "command": "bin/rails active_storage:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: app:template",
+    "type": "shell",
+    "command": "bin/rails app:template LOCATION=/path/to/template",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: app:update",
+    "type": "shell",
+    "command": "bin/rails app:update",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: assets:clean",
+    "type": "shell",
+    "command": "bin/rails assets:clean",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: assets:clobber",
+    "type": "shell",
+    "command": "bin/rails assets:clobber",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
   },
   {
     "label": "Rails: Assets Precompile",
@@ -228,7 +304,877 @@
     "problemMatcher": [
       "$ruby"
     ],
-    "dependsOn": "BundleInstall",
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: assets:reveal",
+    "type": "shell",
+    "command": "bin/rails assets:reveal",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: assets:reveal:full",
+    "type": "shell",
+    "command": "bin/rails assets:reveal:full",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: boot",
+    "type": "shell",
+    "command": "bin/rails boot",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: cache_digests:dependencies",
+    "type": "shell",
+    "command": "bin/rails cache_digests:dependencies",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: cache_digests:nested_dependencies",
+    "type": "shell",
+    "command": "bin/rails cache_digests:nested_dependencies",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: credentials:diff",
+    "type": "shell",
+    "command": "bin/rails credentials:diff",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: credentials:edit",
+    "type": "shell",
+    "command": "bin/rails credentials:edit",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: credentials:show",
+    "type": "shell",
+    "command": "bin/rails credentials:show",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: cucumber:ok",
+    "type": "shell",
+    "command": "bin/rails cucumber:ok",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: cucumber:rerun",
+    "type": "shell",
+    "command": "bin/rails cucumber:rerun",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: cucumber:wip",
+    "type": "shell",
+    "command": "bin/rails cucumber:wip",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:create",
+    "type": "shell",
+    "command": "bin/rails db:create",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:drop",
+    "type": "shell",
+    "command": "bin/rails db:drop",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:encryption:init",
+    "type": "shell",
+    "command": "bin/rails db:encryption:init",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:environment:set",
+    "type": "shell",
+    "command": "bin/rails db:environment:set",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:fixtures:load",
+    "type": "shell",
+    "command": "bin/rails db:fixtures:load",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:migrate",
+    "type": "shell",
+    "command": "bin/rails db:migrate",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:migrate:down",
+    "type": "shell",
+    "command": "bin/rails db:migrate:down",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:migrate:redo",
+    "type": "shell",
+    "command": "bin/rails db:migrate:redo",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:migrate:status",
+    "type": "shell",
+    "command": "bin/rails db:migrate:status",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:migrate:up",
+    "type": "shell",
+    "command": "bin/rails db:migrate:up",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:prepare",
+    "type": "shell",
+    "command": "bin/rails db:prepare",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:reset",
+    "type": "shell",
+    "command": "bin/rails db:reset",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:rollback",
+    "type": "shell",
+    "command": "bin/rails db:rollback",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:schema:cache:clear",
+    "type": "shell",
+    "command": "bin/rails db:schema:cache:clear",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:schema:cache:dump",
+    "type": "shell",
+    "command": "bin/rails db:schema:cache:dump",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:schema:dump",
+    "type": "shell",
+    "command": "bin/rails db:schema:dump",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:schema:load",
+    "type": "shell",
+    "command": "bin/rails db:schema:load",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:seed",
+    "type": "shell",
+    "command": "bin/rails db:seed",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:seed:replant",
+    "type": "shell",
+    "command": "bin/rails db:seed:replant",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:setup",
+    "type": "shell",
+    "command": "bin/rails db:setup",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:system:change",
+    "type": "shell",
+    "command": "bin/rails db:system:change",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: db:version",
+    "type": "shell",
+    "command": "bin/rails db:version",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: destroy",
+    "type": "shell",
+    "command": "bin/rails destroy",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: dev:cache",
+    "type": "shell",
+    "command": "bin/rails dev:cache",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: devcontainer",
+    "type": "shell",
+    "command": "bin/rails devcontainer",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: encrypted:edit",
+    "type": "shell",
+    "command": "bin/rails encrypted:edit",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: encrypted:show",
+    "type": "shell",
+    "command": "bin/rails encrypted:show",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: importmap:install",
+    "type": "shell",
+    "command": "bin/rails importmap:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: initializers",
+    "type": "shell",
+    "command": "bin/rails initializers",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: log:clear",
+    "type": "shell",
+    "command": "bin/rails log:clear",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: middleware",
+    "type": "shell",
+    "command": "bin/rails middleware",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: notes",
+    "type": "shell",
+    "command": "bin/rails notes",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: restart",
+    "type": "shell",
+    "command": "bin/rails restart",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: routes",
+    "type": "shell",
+    "command": "bin/rails routes",
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: runner",
+    "type": "shell",
+    "command": "bin/rails runner",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: secret",
+    "type": "shell",
+    "command": "bin/rails secret",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: solid_cable:install",
+    "type": "shell",
+    "command": "bin/rails solid_cable:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: solid_cache:install",
+    "type": "shell",
+    "command": "bin/rails solid_cache:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: solid_queue:install",
+    "type": "shell",
+    "command": "bin/rails solid_queue:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: solid_queue:start",
+    "type": "shell",
+    "command": "bin/rails solid_queue:start",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: stats",
+    "type": "shell",
+    "command": "bin/rails stats",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: stimulus:install",
+    "type": "shell",
+    "command": "bin/rails stimulus:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: stimulus:install:bun",
+    "type": "shell",
+    "command": "bin/rails stimulus:install:bun",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: stimulus:install:importmap",
+    "type": "shell",
+    "command": "bin/rails stimulus:install:importmap",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: stimulus:install:node",
+    "type": "shell",
+    "command": "bin/rails stimulus:install:node",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: stimulus:manifest:display",
+    "type": "shell",
+    "command": "bin/rails stimulus:manifest:display",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: stimulus:manifest:update",
+    "type": "shell",
+    "command": "bin/rails stimulus:manifest:update",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: tailwindcss:install",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: tailwindcss:build",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:build",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: tailwindcss:build[debug]",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:build[debug]",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: tailwindcss:clobber",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:clobber",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: tailwindcss:install",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: tailwindcss:watch",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:watch",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: tailwindcss:watch[debug]",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:watch[debug]",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: tailwindcss:watch[poll]",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:watch[poll]",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: tailwindcss:watch[always]",
+    "type": "shell",
+    "command": "bin/rails tailwindcss:watch[always]",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
     "condition": "hasBinRails"
   },
   {
@@ -242,25 +1188,12 @@
     "problemMatcher": [
       "$ruby"
     ],
-    "dependsOn": "BundleInstall",
     "condition": "hasBinRails"
   },
   {
-    "label": "Rails: Log Tail",
+    "label": "Rails: test:all",
     "type": "shell",
-    "command": "tail -f log/development.log",
-    "presentation": {
-      "reveal": "always",
-      "panel": "new"
-    },
-    "problemMatcher": [],
-    "dependsOn": "BundleInstall",
-    "condition": "hasLogFile"
-  },
-  {
-    "label": "TailwindCSS: Install",
-    "type": "shell",
-    "command": "bin/rails tailwindcss:install",
+    "command": "bin/rails test:all",
     "problemMatcher": [
       "$ruby"
     ],
@@ -271,9 +1204,9 @@
     "condition": "hasBinRails"
   },
   {
-    "label": "TailwindCSS: Build",
+    "label": "Rails: test:channels",
     "type": "shell",
-    "command": "bin/rails tailwindcss:build",
+    "command": "bin/rails test:channels",
     "problemMatcher": [
       "$ruby"
     ],
@@ -284,9 +1217,9 @@
     "condition": "hasBinRails"
   },
   {
-    "label": "TailwindCSS: Build [Debug]",
+    "label": "Rails: test:controllers",
     "type": "shell",
-    "command": "bin/rails tailwindcss:build[debug]",
+    "command": "bin/rails test:controllers",
     "problemMatcher": [
       "$ruby"
     ],
@@ -297,9 +1230,9 @@
     "condition": "hasBinRails"
   },
   {
-    "label": "TailwindCSS: Watch",
+    "label": "Rails: test:db",
     "type": "shell",
-    "command": "bin/rails tailwindcss:watch",
+    "command": "bin/rails test:db",
     "problemMatcher": [
       "$ruby"
     ],
@@ -310,9 +1243,9 @@
     "condition": "hasBinRails"
   },
   {
-    "label": "TailwindCSS: Watch [Debug]",
+    "label": "Rails: test:functionals",
     "type": "shell",
-    "command": "bin/rails tailwindcss:watch[debug]",
+    "command": "bin/rails test:functionals",
     "problemMatcher": [
       "$ruby"
     ],
@@ -323,9 +1256,9 @@
     "condition": "hasBinRails"
   },
   {
-    "label": "TailwindCSS: Watch [Poll]",
+    "label": "Rails: test:generators",
     "type": "shell",
-    "command": "bin/rails tailwindcss:watch[poll]",
+    "command": "bin/rails test:generators",
     "problemMatcher": [
       "$ruby"
     ],
@@ -336,9 +1269,217 @@
     "condition": "hasBinRails"
   },
   {
-    "label": "TailwindCSS: Watch [Always]",
+    "label": "Rails: test:helpers",
     "type": "shell",
-    "command": "bin/rails tailwindcss:watch[always]",
+    "command": "bin/rails test:helpers",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: test:integration",
+    "type": "shell",
+    "command": "bin/rails test:integration",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: test:jobs",
+    "type": "shell",
+    "command": "bin/rails test:jobs",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: test:mailboxes",
+    "type": "shell",
+    "command": "bin/rails test:mailboxes",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: test:mailers",
+    "type": "shell",
+    "command": "bin/rails test:mailers",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: test:models",
+    "type": "shell",
+    "command": "bin/rails test:models",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: test:units",
+    "type": "shell",
+    "command": "bin/rails test:units",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: time:zones",
+    "type": "shell",
+    "command": "bin/rails time:zones",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: tmp:clear",
+    "type": "shell",
+    "command": "bin/rails tmp:clear",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: tmp:create",
+    "type": "shell",
+    "command": "bin/rails tmp:create",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: turbo:install",
+    "type": "shell",
+    "command": "bin/rails turbo:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: turbo:install:bun",
+    "type": "shell",
+    "command": "bin/rails turbo:install:bun",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: turbo:install:importmap",
+    "type": "shell",
+    "command": "bin/rails turbo:install:importmap",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: turbo:install:node",
+    "type": "shell",
+    "command": "bin/rails turbo:install:node",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: version",
+    "type": "shell",
+    "command": "bin/rails version",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: yarn:install",
+    "type": "shell",
+    "command": "bin/rails yarn:install",
+    "problemMatcher": [
+      "$ruby"
+    ],
+    "presentation": {
+      "reveal": "always",
+      "panel": "new"
+    },
+    "condition": "hasBinRails"
+  },
+  {
+    "label": "Rails: zeitwerk:check",
+    "type": "shell",
+    "command": "bin/rails zeitwerk:check",
     "problemMatcher": [
       "$ruby"
     ],
